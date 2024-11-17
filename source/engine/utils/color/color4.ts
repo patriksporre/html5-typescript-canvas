@@ -10,12 +10,11 @@
  *   representations.
  */
 
-
 interface Color4Parameters {
-    alpha?: number,         // Alpha component (0-255)
-    red?: number,           // Red component (0-255)
-    green?: number,         // Green component (0-255)
-    blue?: number           // Blue component (0-255)
+    alpha?: number,         // Alpha component (0-255), optional
+    red?: number,           // Red component (0-255), optional
+    green?: number,         // Green component (0-255), optional
+    blue?: number           // Blue component (0-255), optional
 }
 
 export class Color4 {
