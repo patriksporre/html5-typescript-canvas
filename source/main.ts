@@ -7,6 +7,7 @@
  */
 
 import { Blitter } from './engine/blitter.js';
+import { Color4 } from './engine/utils/color/color4.js';
 
 const blitter: Blitter = Blitter.getInstance();
 
@@ -20,6 +21,9 @@ window.addEventListener('load', initialize);
  * Sets up any required resources or initial state, then starts the main loop
  */
 function initialize(): void {
+    blitter.create({width: 640, height: 480});
+    blitter.show();
+
     requestAnimationFrame(main);
 }
 
@@ -28,5 +32,9 @@ function initialize(): void {
  * This is the main rendering loop and is called once every frame
  */
 function main(): void {
+    blitter.putPixel(320, 200, Color4.blue);
+
+    blitter.blit();
+
     requestAnimationFrame(main);
 }

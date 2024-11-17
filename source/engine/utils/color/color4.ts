@@ -23,11 +23,7 @@ export class Color4 {
     public green: number;   // Green component (0-255)
     public blue: number;    // Blue component (0-255)
 
-    static black = new Color4({alpha: 255, red: 0, green: 0, blue: 0});         // Predefined static color: black
-    static white = new Color4({alpha: 255, red: 255, green: 255, blue: 255});   // Predefined static color: white
-    static red = new Color4({alpha: 255, red: 255, green: 0, blue: 0});         // Predefined static color: red
-    static green = new Color4({alpha: 255, red: 0, green: 255, blue: 0});       // Predefined static color: green
-    static blue = new Color4({alpha: 255, red: 0, green: 0, blue: 255});        // Predefined static color: blue
+    private cache: number | null = null;
 
     /**
      * Creates a new Color4 instance with optional alpha, red, green, and blue values.
@@ -53,6 +49,8 @@ export class Color4 {
         this.green = (color >> 8) & 0xff;
         this.blue = (color >> 16) & 0xff;
 
+        this.cache = null;
+
         return this;
     }
 
@@ -68,6 +66,8 @@ export class Color4 {
         this.green = (color >> 8) & 0xff;
         this.blue = (color >> 0) & 0xff;
 
+        this.cache = null;
+
         return this;
     }
 
@@ -77,7 +77,10 @@ export class Color4 {
      * @returns A 32 bit integer representing the color
      */
     public toAABBGGRR(): number {
-        return this.alpha << 24 | this.red << 0 | this.green << 8 | this.blue << 16;
+        if (this.cache === null) {
+            this.cache = this.alpha << 24 | this.red << 0 | this.green << 8 | this.blue << 16;
+        }
+        return this.cache;
     }
 
     /**
@@ -86,7 +89,10 @@ export class Color4 {
      * @returns A 32 bit integer representing the color
      */
     public toAARRGGBB(): number {
-        return this.alpha << 24 | this.red << 16 | this.green << 8 | this.blue << 0;
+        if (this.cache === null) {
+            this.cache = this.alpha << 24 | this.red << 16 | this.green << 8 | this.blue << 0;
+        }
+        return this.cache;
     }
 
     /**
@@ -98,4 +104,11 @@ export class Color4 {
     private clamp(value: number): number {
         return Math.max(0, Math.min(255, Math.floor(value)));
     }
+
+    // Predefined static colors
+    static black = new Color4({alpha: 255, red: 0, green: 0, blue: 0}); 
+    static white = new Color4({alpha: 255, red: 255, green: 255, blue: 255});
+    static red = new Color4({alpha: 255, red: 255, green: 0, blue: 0});
+    static green = new Color4({alpha: 255, red: 0, green: 255, blue: 0});
+    static blue = new Color4({alpha: 255, red: 0, green: 0, blue: 255});
 }
