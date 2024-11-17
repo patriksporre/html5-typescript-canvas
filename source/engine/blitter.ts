@@ -103,12 +103,34 @@ export class Blitter {
     }
 
     /**
+     * Clears the entire canvas backbuffer by filling it with a specified color.
+     * 
+     * @param {Color4} color - The color to fill the canvas with.
+     *   Defaults to the current background color of the canvas
+     */
+    public clear(color: Color4 = this.background): void {
+        this.fill(color.toAABBGGRR());
+    }
+
+    /**
+     * Fills the entire backbuffer with a specified 32-bit color value.
+     * 
+     * @param {number} color - The 32 bit color value in AABBGGRR format
+     * @param {Uint32Array} backbuffer - The backbuffer to fill.
+     *   Defaults to the primary backbuffer used for rendering
+     */
+    public fill(color: number, backbuffer: Uint32Array = this.backbuffer32): void {
+        backbuffer.fill(color);
+    }
+
+    /**
      * Plot a pixel at position x and y with desired color, supports clipping and another backbuffer
      * @param {number} x - The x position
      * @param {number} y - The y position
      * @param {number} color - The color in AABBGGRR format
      * @param {boolean} clip - True if clip, false if not (default is false)
-     * @param {Uint32Array} backbuffer - The backbuffer to draw to, by default the backbuffer used as a double buffer
+     * @param {Uint32Array} backbuffer - The backbuffer to fill.
+     *   Defaults to the primary backbuffer used for rendering
      */
   public putPixel(x: number, y: number, color: Color4, clip: boolean = false, backbuffer: Uint32Array = this.backbuffer32): void {
     if (clip) {

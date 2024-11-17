@@ -32,6 +32,8 @@ function initialize(): void {
  * This is the main rendering loop and is called once every frame
  */
 function main(): void {
+    blitter.clear();
+
     blitter.putPixel(320, 200, Color4.blue);
 
     blitter.blit();
