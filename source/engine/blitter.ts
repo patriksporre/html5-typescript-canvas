@@ -20,9 +20,9 @@ interface CanvasParameters {
 export class Blitter {
     private static instance: Blitter;       // Static instance of the Blitter singleton
 
-    public width: number = 0;               // Default canvas width
-    public height: number = 0;              // Default canvas height
-    public background!: Color4;             // Default background color is white per default in Color4
+    public width: number = 0;               // Canvas width (default set to 0)
+    public height: number = 0;              // Canvas height (default set to 0)
+    public background!: Color4;             // Background color (default Color4.white)
 
     private clipping!: Clipping;            // Clipping region
 
