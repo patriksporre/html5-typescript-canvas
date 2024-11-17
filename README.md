@@ -10,13 +10,16 @@ This repository demonstrates low-level pixel operations on an HTML5 canvas using
 
 ## Getting Started
 
+### Prerequisites
+These instructions are tailored for macOS. If you're using a different operating system, then commands and package installation methods may vary.
+
 ### 1. Install Required Tools
 Ensure you have the following tools installed:
-- **TypeScript**: Install globally with:
+- **TypeScript**: install globally with:
   ```bash
   npm install -g typescript
   ```
-- **http-server**: Install globally with:
+- **http-server**: install globally with:
   ```bash
   npm install -g http-server
   ```
