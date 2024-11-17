@@ -6,7 +6,7 @@ This repository demonstrates low-level pixel operations on an HTML5 canvas using
 ## Key Features
 - **Low-level pixel operations**: direct manipulation of the canvas at the pixel level
 - **TypeScript implementation**: strong typing and modern JavaScript features for maintainable code
-- **Minimal dependencies**: no heavy frameworks or libraries — just lean and mean, straightforward programming
+- **Minimal dependencies**: no heavy frameworks or libraries - just lean and mean, straightforward programming
 
 ## Getting Started
 
@@ -41,3 +41,6 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 ## License
 This project is licensed under the MIT License.
+
+## Author
+Developed by Patrik Sporre.
