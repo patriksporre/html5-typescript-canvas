@@ -39,8 +39,8 @@ http-server --cors -c-1
 Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to view the project.
 
 ### 4. Stopping the Processes
-- To stop the **TypeScript Watcher**, press `Ctrl + C` in the terminal running `tsc --watch`
-- To stop the **Local Web Server**, press `Ctrl + C` in the terminal running `http-server`
+- To stop the **TypeScript watcher**, press `ctrl + c` in the terminal running `tsc --watch`
+- To stop the **Local Web server**, press `ctrl + c` in the terminal running `http-server`
 
 ## License
 This project is licensed under the MIT License.
