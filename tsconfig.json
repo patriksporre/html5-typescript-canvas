@@ -4,7 +4,8 @@
       "module": "es6",
       "outDir": "./build",
       "rootDir": "./source",
-      "strict": true
+      "strict": true,
+      "removeComments": true,    
     },
     "include": [
       "source/**/*.ts"
