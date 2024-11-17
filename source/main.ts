@@ -6,6 +6,10 @@
  * Description: This file contains the entry point and main rendering loop for the canvas project
  */
 
+import { Blitter } from './engine/blitter.js';
+
+const blitter: Blitter = Blitter.getInstance();
+
 /**
  * Entry point: waits for the windown to load before initializing the application
  */
