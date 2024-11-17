@@ -32,7 +32,7 @@ export class Color4 {
     /**
      * Creates a new Color4 instance with optional alpha, red, green, and blue values.
      * 
-     * @param params - Object containing color parameters (alpha, red, green, blue)
+     * @param {Color4Parameters} params - Object containing color parameters (alpha, red, green, blue)
      * Defaults to { alpha: 255, red: 0, green: 0, blue: 0 } if not provided
      */
     public constructor({alpha = 255, red = 0, green = 0, blue = 0}: Color4Parameters = {}) {
