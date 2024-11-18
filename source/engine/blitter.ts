@@ -13,6 +13,8 @@
 import { Clipping } from './utils/geometry/clipping.js';
 import { Color4 } from './utils/color/color4.js';
 
+import { getPixel, setPixel } from './blitter/pixel.js';
+
 /**
  * Parameters for initializing the canvas.
  */
@@ -29,7 +31,7 @@ export class Blitter {
     public height: number = 0;                  // Canvas height (default set to 0)
     public background!: Color4;                 // Background color (default Color4.white)
 
-    private clipping!: Clipping;                // Clipping region
+    public clipping!: Clipping;                // Clipping region
 
     private canvas!: HTMLCanvasElement;         // HTML canvas element managed by the Blitter
     private context!: CanvasRenderingContext2D; // 2D rendering context of the canvas
@@ -124,21 +126,37 @@ export class Blitter {
     }
 
     /**
-     * Plot a pixel at position x and y with desired color, supports clipping and another backbuffer
-     * @param {number} x - The x position
-     * @param {number} y - The y position
-     * @param {number} color - The color in AABBGGRR format
-     * @param {boolean} clip - True if clip, false if not (default is false)
-     * @param {Uint32Array} backbuffer - The backbuffer to fill.
-     *   Defaults to the primary backbuffer used for rendering
+     * Utility functions
+     * 
+     * The following methods serve as interfaces to utility functions that provide
+     * low-level operations like pixel manipulation. These utility functions are
+     * imported from dedicated modules for better modularity and maintainability.
      */
-  public putPixel(x: number, y: number, color: Color4, clip: boolean = false, backbuffer: Uint32Array = this.backbuffer32): void {
-    if (clip) {
-        if (x < this.clipping.minX || x >= this.clipping.maxX || y < this.clipping.minY || y >= this.clipping.maxY) {
-            return;
-        }
+
+    /**
+     * Sets a pixel at the specified position in the given backbuffer.
+     * 
+     * @param {number} x - The X coordinate of the pixel
+     * @param {number} y - The Y coordinate of the pixel
+     * @param {Color4} color - The color of the pixel
+     * @param {boolean} clip - Whether to apply clipping (default is false)
+     * @param {Uint32Array} backbuffer - The backbuffer to modify (default is the main backbuffer)
+     */
+    public setPixel(x: number, y: number, color: Color4, clip: boolean = false, backbuffer: Uint32Array = this.backbuffer32): void {
+        setPixel(this, Math.floor(x), Math.floor(y), color, clip, backbuffer);
     }
 
-    backbuffer[y * this.width + x] = color.toAABBGGRR();
-  }
+    /**
+     * Retrieves the color of a pixel at the specified position from the given backbuffer.
+     * 
+     * @param {number} x - The X coordinate of the pixel to retrieve
+     * @param {number} y - The Y coordinate of the pixel to retrieve
+     * @param {boolean} clip - Whether to enforce clipping boundaries (default is false)
+     * @param {Uint32Array} backbuffer - The backbuffer to read from (default is the main backbuffer)
+     * 
+     * @returns {Color4 | null} A Color4 object representing the pixel's color, or null if the pixel is out of bounds
+     */
+    public getPixel(x: number, y: number, clip: boolean = false, backbuffer: Uint32Array = this.backbuffer32): Color4 | null {
+        return getPixel(this, Math.floor(x), Math.floor(y), clip, backbuffer);
+    }
 }

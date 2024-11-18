@@ -11,19 +11,19 @@
  */
 
 interface Color4Parameters {
-    alpha?: number,         // Alpha component (0-255), optional
-    red?: number,           // Red component (0-255), optional
-    green?: number,         // Green component (0-255), optional
-    blue?: number           // Blue component (0-255), optional
+    alpha?: number,                     // Alpha component (0-255), optional
+    red?: number,                       // Red component (0-255), optional
+    green?: number,                     // Green component (0-255), optional
+    blue?: number                       // Blue component (0-255), optional
 }
 
 export class Color4 {
-    public alpha: number;   // Alpha component (0-255)
-    public red: number;     // Red component (0-255)
-    public green: number;   // Green component (0-255)
-    public blue: number;    // Blue component (0-255)
+    public alpha: number;               // Alpha component (0-255)
+    public red: number;                 // Red component (0-255)
+    public green: number;               // Green component (0-255)
+    public blue: number;                // Blue component (0-255)
 
-    private cache: number | null = null;
+    private cache: number | null = null;    // The numerical representation of the color
 
     /**
      * Creates a new Color4 instance with optional alpha, red, green, and blue values.
@@ -49,7 +49,7 @@ export class Color4 {
         this.green = (color >> 8) & 0xff;
         this.blue = (color >> 16) & 0xff;
 
-        this.cache = null;
+        this.cache = color;
 
         return this;
     }
@@ -66,7 +66,7 @@ export class Color4 {
         this.green = (color >> 8) & 0xff;
         this.blue = (color >> 0) & 0xff;
 
-        this.cache = null;
+        this.cache = color;
 
         return this;
     }
@@ -103,6 +103,15 @@ export class Color4 {
      */
     private clamp(value: number): number {
         return Math.max(0, Math.min(255, Math.floor(value)));
+    }
+
+    /**
+     * Converts the color to a string representation.
+     * 
+     * @returns {string} A string representing the color in ARGB format
+     */
+    public toString(): string {
+        return 'argb(' + (this.alpha / 255) + ', ' + this.red + ', ' + this.green + ', ' + this.blue + ')';
     }
 
     // Predefined static colors

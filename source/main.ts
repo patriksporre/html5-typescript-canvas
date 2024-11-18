@@ -34,9 +34,11 @@ function initialize(): void {
 function main(): void {
     blitter.clear();
 
-    blitter.putPixel(320, 200, Color4.blue);
+    blitter.setPixel(320, 240, Color4.blue);
+
+    console.log(blitter.getPixel(320, 240)?.toString())
 
     blitter.blit();
 
-    requestAnimationFrame(main);
+    //requestAnimationFrame(main);
 }
