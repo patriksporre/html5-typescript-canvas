@@ -31,7 +31,7 @@ export class Blitter {
     public height: number = 0;                  // Canvas height (default set to 0)
     public background!: Color4;                 // Background color (default Color4.white)
 
-    public clipping!: Clipping;                // Clipping region
+    public clipping!: Clipping;                 // Clipping region
 
     private canvas!: HTMLCanvasElement;         // HTML canvas element managed by the Blitter
     private context!: CanvasRenderingContext2D; // 2D rendering context of the canvas

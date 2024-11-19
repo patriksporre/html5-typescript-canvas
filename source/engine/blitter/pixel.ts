@@ -12,15 +12,15 @@ import { Color4 } from "../utils/color/color4.js";
  * @param {Uint32Array} backbuffer - The backbuffer where the pixel will be drawn (required)
  */
 export function setPixel(blitter: Blitter, x: number, y: number, color: Color4, clip: boolean = false, backbuffer: Uint32Array): void {
-  if (clip) {
-    if (
-      x < blitter.clipping.minX || x >= blitter.clipping.maxX ||
-      y < blitter.clipping.minY || y >= blitter.clipping.maxY) {
-      return;
+    if (clip) {
+        if (
+            x < blitter.clipping.minX || x >= blitter.clipping.maxX ||
+            y < blitter.clipping.minY || y >= blitter.clipping.maxY) {
+            return;
+        }
     }
-  }
 
-  backbuffer[y * blitter.width + x] = color.toAABBGGRR();
+    backbuffer[y * blitter.width + x] = color.toAABBGGRR();
 }
 
 /**
@@ -37,11 +37,11 @@ export function setPixel(blitter: Blitter, x: number, y: number, color: Color4, 
 export function getPixel(blitter: Blitter, x: number, y: number, clip: boolean = false, backbuffer: Uint32Array): Color4 | null {
     if (clip) {
         if (
-          x < blitter.clipping.minX || x >= blitter.clipping.maxX ||
-          y < blitter.clipping.minY || y >= blitter.clipping.maxY) {
-          return null;
+            x < blitter.clipping.minX || x >= blitter.clipping.maxX ||
+            y < blitter.clipping.minY || y >= blitter.clipping.maxY) {
+            return null;
         }
-      }
+    }
 
-      return new Color4().fromAABBGGRR(backbuffer[y * blitter.width + x]);
+    return new Color4().fromAABBGGRR(backbuffer[y * blitter.width + x]);
 }

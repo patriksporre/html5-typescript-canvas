@@ -111,7 +111,7 @@ export class Color4 {
      * @returns {string} A string representing the color in ARGB format
      */
     public toString(): string {
-        return 'argb(' + (this.alpha / 255) + ', ' + this.red + ', ' + this.green + ', ' + this.blue + ')';
+        return 'argb(' + this.alpha + ', ' + this.red + ', ' + this.green + ', ' + this.blue + ')';
     }
 
     // Predefined static colors
