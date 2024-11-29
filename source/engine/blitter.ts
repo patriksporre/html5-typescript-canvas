@@ -115,7 +115,7 @@ export class Blitter {
     }
 
     /**
-     * Fills the entire backbuffer with a specified 32-bit color value.
+     * Fills the entire backbuffer with a specified 32 bit color value.
      * 
      * @param {number} color - The 32 bit color value in AABBGGRR format
      * @param {Uint32Array} backbuffer - The backbuffer to fill.
