@@ -13,7 +13,7 @@ import { clamp } from "../../engine/utils/helper.js"            // Helper functi
  * @param {Vector2} v1 - The first corner of the rectangle (can be any corner)
  * @param {Vector2} v2 - The opposite corner of the rectangle
  * @param {Color4} color - The color to fill the rectangle with, in AABBGGRR format
- * @param {boolean} [clip=false] - Whether to clip the rectangle to the screen bounds
+ * @param {boolean} clip - Whether to clip the rectangle to the screen bounds (default is false)
  * @param {Uint32Array} backbuffer - The backbuffer where the rectangle will be drawn
  */
   export function rectangle(blitter: Blitter, v1: Vector2, v2: Vector2, color: Color4, clip: boolean = false, backbuffer: Uint32Array): void {
