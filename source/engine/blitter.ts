@@ -12,8 +12,10 @@
 
 import { Clipping } from './utils/geometry/clipping.js';
 import { Color4 } from './utils/color/color4.js';
+import { Vector2 } from './utils/math/vector2.js';
 
 import { getPixel, setPixel } from './blitter/pixel.js';
+import { rectangle } from './blitter/shapes.js';
 
 /**
  * Parameters for initializing the canvas.
@@ -158,5 +160,18 @@ export class Blitter {
      */
     public getPixel(x: number, y: number, clip: boolean = false, backbuffer: Uint32Array = this.backbuffer32): Color4 | null {
         return getPixel(this, Math.floor(x), Math.floor(y), clip, backbuffer);
+    }
+
+    /**
+     * Draws a filled rectangle on the canvas.
+     * 
+     * @param {Vector2} v1 - The first corner of the rectangle (can be any corner)
+     * @param {Vector2} v2 - The opposite corner of the rectangle
+     * @param {Color4} color - The color of the pixel
+     * @param {boolean} clip - Whether to apply clipping (default is false)
+     * @param {Uint32Array} backbuffer - The backbuffer to modify (default is the main backbuffer)
+     */
+    public rectangle(v1: Vector2, v2: Vector2, color: Color4, clip: boolean = false, backbuffer: Uint32Array = this.backbuffer32) {
+        return rectangle(this, v1, v2, color, clip, backbuffer);
     }
 }
