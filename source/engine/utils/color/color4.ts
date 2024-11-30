@@ -11,19 +11,21 @@
  */
 
 interface Color4Parameters {
-    alpha?: number,                     // Alpha component (0-255), optional
-    red?: number,                       // Red component (0-255), optional
-    green?: number,                     // Green component (0-255), optional
-    blue?: number                       // Blue component (0-255), optional
+    alpha?: number,                         // Alpha component (0-255), optional
+    red?: number,                           // Red component (0-255), optional
+    green?: number,                         // Green component (0-255), optional
+    blue?: number,                          // Blue component (0-255), optional
+    caching?: boolean                       // If to cache the color value, optional
 }
 
 export class Color4 {
-    public alpha: number;               // Alpha component (0-255)
-    public red: number;                 // Red component (0-255)
-    public green: number;               // Green component (0-255)
-    public blue: number;                // Blue component (0-255)
+    public alpha: number;                   // Alpha component (0-255)
+    public red: number;                     // Red component (0-255)
+    public green: number;                   // Green component (0-255)
+    public blue: number;                    // Blue component (0-255)
 
     private cache: number | null = null;    // The numerical representation of the color
+    private caching: boolean;               // To cache the numerical representation or not
 
     /**
      * Creates a new Color4 instance with optional alpha, red, green, and blue values.
@@ -31,11 +33,13 @@ export class Color4 {
      * @param {Color4Parameters} params - Object containing color parameters (alpha, red, green, blue)
      * Defaults to { alpha: 255, red: 0, green: 0, blue: 0 } if not provided
      */
-    public constructor({alpha = 255, red = 0, green = 0, blue = 0}: Color4Parameters = {}) {
+    public constructor({alpha = 255, red = 0, green = 0, blue = 0, caching = true}: Color4Parameters = {}) {
         this.alpha = this.clamp(alpha);
         this.red = this.clamp(red);
         this.green = this.clamp(green);
         this.blue = this.clamp(blue);
+
+        this.caching = caching;
     }
     /**
      * Sets the color components from a 32 bit integer in AABBGGRR format.
@@ -77,10 +81,21 @@ export class Color4 {
      * @returns A 32 bit integer representing the color
      */
     public toAABBGGRR(): number {
-        if (this.cache === null) {
-            this.cache = this.alpha << 24 | this.red << 0 | this.green << 8 | this.blue << 16;
+        if (this.caching && this.cache === null) {
+            this.cache = this.getAABBGGRR();
         }
-        return this.cache;
+
+        return this.cache ?? this.getAABBGGRR();
+    }
+
+    /**
+     * Computes the 32 bit integer representation of the color in AABBGGRR format.
+     * This helper centralizes the bitwise computation logic for reuse.
+     * 
+     * @returns A 32 bit integer representing the color
+     */
+    private getAABBGGRR(): number {
+        return this.alpha << 24 | this.red << 0 | this.green << 8 | this.blue << 16;
     }
 
     /**
@@ -89,10 +104,21 @@ export class Color4 {
      * @returns A 32 bit integer representing the color
      */
     public toAARRGGBB(): number {
-        if (this.cache === null) {
-            this.cache = this.alpha << 24 | this.red << 16 | this.green << 8 | this.blue << 0;
+        if (this.caching && this.cache === null) {
+            this.cache = this.getAARRGGBB();
         }
-        return this.cache;
+
+        return this.cache ?? this.getAARRGGBB();
+    }
+
+    /**
+     * Computes the 32 bit integer representation of the color in AARRGGBB format.
+     * This helper centralizes the bitwise computation logic for reuse.
+     * 
+     * @returns A 32 bit integer representing the color
+     */
+    private getAARRGGBB(): number {
+        return this.alpha << 24 | this.red << 16 | this.green << 8 | this.blue << 0;
     }
 
     /**
