@@ -16,7 +16,7 @@ import { Color4 } from "../../engine/utils/color/color4.js";    // Color4 class 
  * Initializes the effect. Logs a message to the console.
  */
 export function initialize() {
-    console.log('01canvas | a blue canvas');
+    console.log('01canvas | blue canvas');
 }
 
 /**
