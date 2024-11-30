@@ -9,7 +9,7 @@ import { Color4 } from "../utils/color/color4.js";
  * @param {number} y - The Y coordinate of the pixel to plot
  * @param {Color4} color - The color of the pixel to plot, represented as a Color4 object
  * @param {boolean} clip - Whether to enforce clipping boundaries (default is false)
- * @param {Uint32Array} backbuffer - The backbuffer where the pixel will be drawn (required)
+ * @param {Uint32Array} backbuffer - The backbuffer where the pixel will be drawn
  */
 export function setPixel(blitter: Blitter, x: number, y: number, color: Color4, clip: boolean = false, backbuffer: Uint32Array): void {
     if (clip) {
