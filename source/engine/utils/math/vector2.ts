@@ -32,7 +32,7 @@ export class Vector2 {
      * @param {Vector2Parameters} vector2 - An object containing x and y coordinates.
      * Each coordinate is optional and defaults to 0 if not provided.
      */
-    constructor({ x = 0, y = 0 }: Vector2Parameters = {}) {
+    constructor({x = 0, y = 0}: Vector2Parameters = {}) {
         this.x = x;
         this.y = y;
     }
@@ -43,7 +43,7 @@ export class Vector2 {
      * @returns {Vector2} A new Vector2 object with identical x and y coordinates.
      */
     public clone(): Vector2 {
-        return new Vector2({ x: this.x, y: this.y });
+        return new Vector2({x: this.x, y: this.y});
     }
 
     /**
