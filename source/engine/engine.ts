@@ -12,7 +12,7 @@
  */
 
 import { Blitter } from './blitter.js';             // Blitter class for canvas operations
-import { Effect } from "./interfaces.js";           // Effect interface defining effect structure
+import { Effect } from "./effect.js";           // Effect interface defining effect structure
 
 // Singleton instance of the Blitter for rendering operations
 const blitter: Blitter = Blitter.getInstance();
