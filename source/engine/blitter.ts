@@ -19,7 +19,6 @@ import { drawBuffer, drawBitmap } from './blitter/bitmap.js';
 import { getPixel, setPixel } from './blitter/pixel.js';
 import { rectangle } from './blitter/shapes.js';
 
-
 /**
  * Parameters for initializing the canvas.
  */
