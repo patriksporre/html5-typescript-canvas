@@ -10,6 +10,8 @@
  *   representations.
  */
 
+import { clamp } from "../../utils/helper.js"      // Helper functions
+
 interface Color4Parameters {
     alpha?: number,                         // Alpha component (0-255), optional
     red?: number,                           // Red component (0-255), optional
@@ -34,10 +36,10 @@ export class Color4 {
      * Defaults to { alpha: 255, red: 0, green: 0, blue: 0 } if not provided
      */
     public constructor({alpha = 255, red = 0, green = 0, blue = 0, caching = true}: Color4Parameters = {}) {
-        this.alpha = this.clamp(alpha);
-        this.red = this.clamp(red);
-        this.green = this.clamp(green);
-        this.blue = this.clamp(blue);
+        this.alpha = clamp(alpha, 0, 255);
+        this.red = clamp(red, 0, 255);
+        this.green = clamp(green, 0, 255);
+        this.blue = clamp(blue, 0, 255);
 
         this.caching = caching;
     }
@@ -119,16 +121,6 @@ export class Color4 {
      */
     private getAARRGGBB(): number {
         return this.alpha << 24 | this.red << 16 | this.green << 8 | this.blue << 0;
-    }
-
-    /**
-     * Clamps a given value to the range [0, 255] and converts it to an integer.
-     * 
-     * @param {number} value - The value to clamp
-     * @returns {number} The clamped and floored value within the range [0, 255]
-     */
-    private clamp(value: number): number {
-        return Math.max(0, Math.min(255, Math.floor(value)));
     }
 
     /**
