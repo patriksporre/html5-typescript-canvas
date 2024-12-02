@@ -10,12 +10,15 @@
  *   the backbuffer to the screen.
  */
 
+import { Bitmap } from './utils/bitmap/bitmap.js';
 import { Clipping } from './utils/geometry/clipping.js';
 import { Color4 } from './utils/color/color4.js';
 import { Vector2 } from './utils/math/vector2.js';
 
+import { drawBuffer, drawBitmap } from './blitter/bitmap.js';
 import { getPixel, setPixel } from './blitter/pixel.js';
 import { rectangle } from './blitter/shapes.js';
+
 
 /**
  * Parameters for initializing the canvas.
@@ -173,5 +176,33 @@ export class Blitter {
      */
     public rectangle(v1: Vector2, v2: Vector2, color: Color4, clip: boolean = false, backbuffer: Uint32Array = this.backbuffer32) {
         return rectangle(this, v1, v2, color, clip, backbuffer);
+    }
+
+    /**
+     * Draws an arbitrary Uint32Array (i.e., a bitmap) onto the backbuffer.
+     * 
+     * @param {number} width - The width of the Uint32Array
+     * @param {number} height - The height of the Uint32Array
+     * @param {Uint32Array} pixels - The array of pixels
+     * @param {number} x - The starting x position on the backbuffer
+     * @param {number} y - The starting y position on the backbuffer
+     * @param {boolean} clip - Whether to enforce clipping boundaries (default is true)
+     * @param {Uint32Array} backbuffer - The backbuffer where the buffer will be drawn (default is the main backbuffer)
+     */
+    public drawBuffer(width: number, height: number, pixels: Uint32Array, x: number = 0, y: number = 0, clip: boolean = true, backbuffer: Uint32Array = this.backbuffer32): void {
+        drawBuffer(this, width, height, pixels, x, y, clip, backbuffer);
+    }
+
+    /**
+     * Draws a Bitmap object onto the backbuffer.
+     * 
+     * @param {Bitmap} bitmap - The bitmap to draw
+     * @param {number} x - The starting x position on the backbuffer
+     * @param {number} y - The starting y position on the backbuffer
+     * @param {boolean} clip - Whether to enforce clipping boundaries (default is true)
+     * @param {Uint32Array} backbuffer - The backbuffer where the bitmap will be drawn (default is the main backbuffer)
+     */
+    public drawBitmap(bitmap: Bitmap, x: number = 0, y: number = 0, clip: boolean = true, backbuffer: Uint32Array = this.backbuffer32): void {
+        drawBitmap(this, bitmap, x, y, clip, backbuffer);
     }
 }
