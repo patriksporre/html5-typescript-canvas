@@ -130,6 +130,15 @@ export class Blitter {
     }
 
     /**
+     * Returns the default and primary backbuffer for rendering to the canvas.
+     * 
+     * @returns {Uint32Array} The Blitter backbuffer
+     */
+    public get backbuffer(): Uint32Array {
+        return this.backbuffer32;
+    }
+
+    /**
      * Utility functions
      * 
      * The following methods serve as interfaces to utility functions that provide
