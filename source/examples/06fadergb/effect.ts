@@ -17,7 +17,15 @@ import { Color4 } from "../../engine/utils/color/color4.js"; // Color4 utility f
 import { lerp } from "../../engine/utils/helper.js"; // Helper function for linear interpolation
 
 // Global variable to hold the image object
-let image: BitmapImage = new BitmapImage();
+const image: BitmapImage = new BitmapImage();
+
+// Define the target color (black in this case)
+const targetRed: number = Color4.black.red;
+const targetGreen: number = Color4.black.green;
+const targetBlue: number = Color4.black.blue;
+
+// Controls the speed of the fade effect
+const frequency = 0.2;
 
 /**
  * Initializes the effect.
@@ -48,13 +56,7 @@ export function render(blitter: Blitter, elapsedTime: number) {
     let backbufferIndex: number = 0;           // Current index in the backbuffer
     let imageIndex: number = 0;                // Current index in the image data
 
-    // Define the target color (black in this case)
-    const targetRed = Color4.black.red;
-    const targetGreen = Color4.black.green;
-    const targetBlue = Color4.black.blue;
-
     // Calculate the interpolation factor based on a sinusoidal curve
-    const frequency = 0.2; // Controls the speed of the fade effect
     const t = (Math.sin(frequency * elapsedTime * Math.PI) + 1) / 2; // Normalize to [0, 1]
 
     for (let y = 0; y < image.height; y++) {
