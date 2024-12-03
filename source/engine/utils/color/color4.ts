@@ -78,9 +78,9 @@ export class Color4 {
     }
 
     /**
-     * Converts the color components to a 32 bit integer in AABBGGRR format.
+     * Converts the current color instance to a 32 bit integer in AABBGGRR format.
      * 
-     * @returns A 32 bit integer representing the color
+     * @returns {number} A 32-bit integer representing the color in AABBGGRR format
      */
     public toAABBGGRR(): number {
         if (this.caching && this.cache === null) {
@@ -101,9 +101,9 @@ export class Color4 {
     }
 
     /**
-     * Converts the color components to a 32 bit integer in AARRGGBB format.
+     * Converts the current color instance to a 32-bit integer in AARRGGBB format.
      * 
-     * @returns A 32 bit integer representing the color
+     * @returns {number} A 32-bit integer representing the color in AARRGGBB format
      */
     public toAARRGGBB(): number {
         if (this.caching && this.cache === null) {
