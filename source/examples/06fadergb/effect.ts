@@ -13,6 +13,7 @@
 import { Blitter } from "../../engine/blitter.js"; // Blitter class for managing canvas operations
 import { BitmapImage } from "../../engine/utils/bitmap/bitmapimage.js"; // BitmapImage class for loading images from file
 import { Color4 } from "../../engine/utils/color/color4.js"; // Color4 utility for handling colors
+
 import { lerp } from "../../engine/utils/helper.js"; // Helper function for linear interpolation
 
 // Global variable to hold the image object
@@ -72,7 +73,7 @@ export function render(blitter: Blitter, elapsedTime: number) {
             const blendedBlue = Math.round(lerp(blue, targetBlue, t));
 
             // Reconstruct the pixel with the new RGB values and full opacity
-            blitter.backbuffer[backbufferIndex++] = (255 << 24) | (blendedBlue << 16) | (blendedGreen << 8) | blendedRed;
+            blitter.backbuffer[backbufferIndex++] = (255 << 24) | (blendedBlue << 16) | (blendedGreen << 8) | (blendedRed << 0);
         }
         backbufferIndex += delta; // Adjust for the padding between image rows
     }
