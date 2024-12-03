@@ -30,8 +30,14 @@ export async function loader(path: string) {
     // Dynamically import the effect module
     const effect: Effect = await import(path);
 
-    // Call the effect's initialization method
-    effect.initialize();
+    // Along the way I realised passing the Blitter object was a good idea..
+    if (effect.initialize.length > 0) {
+        // Pass the Blitter object if the function expects arguments
+        effect.initialize(blitter);
+    } else {
+        // Call without arguments for backward compatibility
+        effect.initialize();
+    }
 
     // State variables
     let running: boolean = true;                    // Whether the rendering loop is running

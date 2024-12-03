@@ -25,7 +25,7 @@ export interface Effect {
     /**
      * Initializes the effect. This method is called once before the rendering loop starts.
      */
-    initialize(): void;
+    initialize(blitter?: Blitter): void;
 
     /**
      * Renders the effect for a given frame.
