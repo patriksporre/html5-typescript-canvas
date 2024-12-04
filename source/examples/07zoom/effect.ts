@@ -70,7 +70,7 @@ export function render(blitter: Blitter, elapsedTime: number) {
 
     // Calculate the zoom factor using a sinusoidal function
     const zoom = minZoom + (maxZoom - minZoom) * (0.5 * (1 + Math.sin(frequency * elapsedTime * Math.PI)));
-
+    
     /**
     The inner loop maps each screen pixel to a corresponding image pixel based on the zoom factor.
     1.  Calculate the normalized screen coordinates relative to the screen center
