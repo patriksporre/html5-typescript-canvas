@@ -13,6 +13,7 @@
 import { Bitmap } from './utils/bitmap/bitmap.js';
 import { Clipping } from './utils/geometry/clipping.js';
 import { Color4 } from './utils/color/color4.js';
+import { Filter } from './filters/filter.js';
 import { Vector2 } from './utils/math/vector2.js';
 
 import { drawBuffer, drawBitmap } from './blitter/bitmap.js';
@@ -136,6 +137,10 @@ export class Blitter {
      */
     public get backbuffer(): Uint32Array {
         return this.backbuffer32;
+    }
+
+    public applyFilter(filter: Filter, backbuffer: Uint32Array = this.backbuffer32): void {
+        filter.process(backbuffer, this.clipping.maxX, this.clipping.maxY);
     }
 
     /**
