@@ -27,7 +27,7 @@ export class GrayscaleFilter extends BaseFilter {
      * @param {number} width - The width of the image in pixels
      * @param {number} height - The height of the image in pixels
      */
-    process(backbuffer: Uint32Array, width: number, height: number): void {
+    public process(backbuffer: Uint32Array, width: number, height: number): void {
         for (let i = 0; i < backbuffer.length; i++) {
             const pixel: number = backbuffer[i]; // Extract the current pixel
 
