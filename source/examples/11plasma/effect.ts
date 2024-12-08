@@ -30,7 +30,7 @@ const color: Color4 = new Color4({ caching: false }); // Reusable Color4 object 
  * This function sets up the required color palette and the plasma buffer based
  * on the canvas dimensions. It also logs an initialization message to the console.
  * 
- * @param {Blitter} [blitter] - Optional instance of the Blitter class for managing the canvas.
+ * @param {Blitter} [blitter] - Optional instance of the Blitter class for managing the canvas
  */
 export function initialize(blitter?: Blitter) {
     console.log("11plasma | thanks sean");
@@ -52,8 +52,8 @@ export function initialize(blitter?: Blitter) {
  * Thanks for the inspiration, Sean! I also fixed the color computation to fully utilize
  * all 255 colors for a smoother effect.
  * 
- * @param {Blitter} blitter - Instance of the Blitter class for handling canvas drawing.
- * @param {number} elapsedTime - The total elapsed time since the effect started, in seconds.
+ * @param {Blitter} blitter - Instance of the Blitter class for handling canvas drawing
+ * @param {number} elapsedTime - The total elapsed time since the effect started, in seconds
  */
 export function render(blitter: Blitter, elapsedTime: number) {
     pointer = 0;
