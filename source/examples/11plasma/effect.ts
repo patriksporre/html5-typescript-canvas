@@ -31,7 +31,7 @@ let pointer: number;        // Index pointer for writing into the backbuffer
  * @param {Blitter} [blitter] - Optional instance of the Blitter class for managing the canvas.
  */
 export function initialize(blitter?: Blitter) {
-    console.log("11plasma | a thousand options");
+    console.log("11plasma | o so boring");
 
     // Set canvas dimensions
     width = blitter?.clipping.maxX!;    // Maximum x-coordinate for clipping
