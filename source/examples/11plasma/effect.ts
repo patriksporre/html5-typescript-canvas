@@ -8,19 +8,21 @@
  *   Implements a dynamic plasma effect using a smooth color palette and 
  *   sinusoidal calculations. The plasma effect includes time-based motion 
  *   and a dynamically drifting center of gravity for visual variation.
+ * 
+ *   Inspired by the plasma developed by Sean (mrkite) at https://github.com/mrkite/demofx,
+ *   with fixes for full 255 color usage in the color computation.
  */
 
 import { Blitter } from "../../engine/blitter.js";              // Blitter class for managing canvas operations
 import { Color4 } from "../../engine/utils/color/color4.js";    // Color4 utility class for RGBA colors
-import { clamp } from "../../engine/utils/helper.js";           // Helper function to clamp values to a specified range
 
 // Global variables for the plasma effect
-let palette: Uint32Array;   // Color palette with 256 smooth gradient entries
-let plasma: Uint8Array;     // Plasma buffer holding the color indices for each pixel
 let width: number;          // Screen width in pixels
 let height: number;         // Screen height in pixels
 
-let pointer: number;        // Index pointer for writing into the backbuffer
+let pointer: number;        // Pointer to the backbuffer
+
+const color: Color4 = new Color4({ caching: false }); // Reusable Color4 object for pixel calculations
 
 /**
  * Initializes the plasma effect.
@@ -31,24 +33,11 @@ let pointer: number;        // Index pointer for writing into the backbuffer
  * @param {Blitter} [blitter] - Optional instance of the Blitter class for managing the canvas.
  */
 export function initialize(blitter?: Blitter) {
-    console.log("11plasma | o so boring");
+    console.log("11plasma | thanks sean");
 
     // Set canvas dimensions
     width = blitter?.clipping.maxX!;    // Maximum x-coordinate for clipping
-    height = blitter?.clipping.maxY!;  // Maximum y-coordinate for clipping
-    
-    // Initialize the plasma buffer with dimensions matching the canvas
-    plasma = new Uint8Array(width * height);
-
-    // Create a smooth color palette with 256 entries
-    palette = new Uint32Array(256);
-    for (let i = 0; i < 256; i++) {
-        palette[i] = new Color4({
-            red: Math.sin(0.02 * i + 0) * 127 + 128,   // Smooth sinusoidal red component
-            green: Math.sin(0.02 * i + 2) * 127 + 128, // Phase-shifted green component
-            blue: Math.sin(0.02 * i + 4) * 127 + 128   // Phase-shifted blue component
-        }).toAABBGGRR();                               // Convert to packed AABBGGRR format
-    }
+    height = blitter?.clipping.maxY!;   // Maximum y-coordinate for clipping
 }
 
 /**
@@ -58,35 +47,45 @@ export function initialize(blitter?: Blitter) {
  * equations and maps them to colors from the palette. The center of the plasma effect 
  * drifts over time to create motion. The result is drawn to the backbuffer.
  * 
+ * I spent a Sunday afternoon experimenting with various expressions for the plasma and
+ * finally settled on an approach inspired by Sean (mrkite) at https://github.com/mrkite/demofx.
+ * Thanks for the inspiration, Sean! I also fixed the color computation to fully utilize
+ * all 255 colors for a smoother effect.
+ * 
  * @param {Blitter} blitter - Instance of the Blitter class for handling canvas drawing.
  * @param {number} elapsedTime - The total elapsed time since the effect started, in seconds.
  */
 export function render(blitter: Blitter, elapsedTime: number) {
-    pointer = 0; // Reset pointer for the backbuffer index
+    pointer = 0;
 
-    // Dynamically calculate the center of gravity for the plasma effect
-    const centerX: number = width / 2 + Math.sin(elapsedTime) * 50; // Horizontal drift based on sine wave
-    const centerY: number = height / 2 + Math.cos(elapsedTime) * 25; // Vertical drift based on cosine wave
+    // Precompute time-related variables for clarity
+    const time1 = elapsedTime / 3;
+    const time2 = elapsedTime / 5;
+    const time3 = elapsedTime * 0.8 + 1;
+    const time4 = elapsedTime * 0.5;
 
     for (let y = 0; y < height; y++) {
-        const dy: number = y - centerY; // Vertical distance from the center
+        const dy = y / height - 0.5;            // Normalized y-coordinate
+        const cy = dy + 0.5 + Math.cos(time1);  // Vertical motion with time
 
         for (let x = 0; x < width; x++) {
-            const dx: number = x - centerX; // Horizontal distance from the center
+            const dx = x / width - 0.5;             // Normalized x-coordinate
+            const cx = dx + 0.5 * Math.sin(time2);  // Horizontal motion with time
 
-            // Calculate the plasma value using a blend of sinusoidal equations
-            const value: number = (
-                128 + (128 * Math.sin(x / 8) + elapsedTime) +                               // Horizontal wave
-                128 + (128 * Math.sin(y / 16) + elapsedTime) +                              // Vertical wave
-                128 + (128 * Math.sin((x + y) / 16)) +                                      // Diagonal wave
-                128 + (128 * Math.sin(Math.sqrt(dx * dx + dy * dy) / 8 + elapsedTime * 4))  // Radial wave
-            ) / 4; // Average the combined sinusoidal values
+            // Compute the plasma value
+            const value = (
+                Math.sin(dx * 10 + elapsedTime) +                       // Horizontal wave
+                Math.sin(Math.sqrt(75 * (cx * cx + cy * cy) + time3)) + // Radial wave
+                Math.cos(Math.sqrt(dx * dx + dy * dy) - time4)          // Circular motion
+            );
 
-            // Clamp the plasma value to the range [0, 255] for color indexing
-            const color: number = clamp(Math.round(value), 0, 255);
+            // Use Color4 object to compute color values
+            color.red = Math.floor((Math.sin(value * Math.PI) + 1) * 127.5);    // Sinusoidal red channel
+            color.green = 0;                                                    // Static green channel
+            color.blue = Math.floor((Math.cos(value * Math.PI) + 1) * 127.5);   // Sinusoidal blue channel
 
-            // Write the corresponding color from the palette to the backbuffer
-            blitter.backbuffer[pointer++] = palette[color];
+            // Assign color to the backbuffer
+            blitter.backbuffer[pointer++] = color.toAABBGGRR();
         }
     }
 }
