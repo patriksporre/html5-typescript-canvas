@@ -30,7 +30,7 @@ let pointer: number;
  * - Initializes the fire color palette with shades ranging from black to red, orange, and yellow
  * - Logs a message to the console
  * 
- * @param {Blitter} [blitter] - Optional instance of the Blitter class for setup.
+ * @param {Blitter} [blitter] - Optional instance of the Blitter class for setup
  */
 export function initialize(blitter?: Blitter) {
     console.log("10fire | light my fire");
@@ -59,8 +59,8 @@ export function initialize(blitter?: Blitter) {
  * - Propagates the fire upward by averaging the intensity values of the pixels below
  * - Renders the fire buffer to the canvas using the precomputed color palette
  * 
- * @param {Blitter} blitter - An instance of the Blitter class for canvas operations.
- * @param {number} elapsedTime - The total elapsed time since the effect started, in seconds.
+ * @param {Blitter} blitter - An instance of the Blitter class for canvas operations
+ * @param {number} elapsedTime - The total elapsed time since the effect started, in seconds
  */
 export function render(blitter: Blitter, elapsedTime: number) {
     // Generate the bottom rows of the fire buffer with random high-intensity values
