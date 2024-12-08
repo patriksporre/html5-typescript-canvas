@@ -59,21 +59,21 @@ export function render(blitter: Blitter, elapsedTime: number) {
     pointer = 0;
 
     // Precompute time-related variables for clarity
-    const time1 = elapsedTime / 3;
-    const time2 = elapsedTime / 5;
-    const time3 = elapsedTime * 0.8 + 1;
-    const time4 = elapsedTime * 0.5;
+    const time1: number = elapsedTime / 3;
+    const time2: number = elapsedTime / 5;
+    const time3: number = elapsedTime * 0.8 + 1;
+    const time4: number = elapsedTime * 0.5;
 
     for (let y = 0; y < height; y++) {
-        const dy = y / height - 0.5;            // Normalized y-coordinate
-        const cy = dy + 0.5 + Math.cos(time1);  // Vertical motion with time
+        const dy: number = y / height - 0.5;            // Normalized y-coordinate
+        const cy: number = dy + 0.5 + Math.cos(time1);  // Vertical motion with time
 
         for (let x = 0; x < width; x++) {
-            const dx = x / width - 0.5;             // Normalized x-coordinate
-            const cx = dx + 0.5 * Math.sin(time2);  // Horizontal motion with time
+            const dx: number = x / width - 0.5;             // Normalized x-coordinate
+            const cx: number = dx + 0.5 * Math.sin(time2);  // Horizontal motion with time
 
             // Compute the plasma value
-            const value = (
+            const value: number = (
                 Math.sin(dx * 10 + elapsedTime) +                       // Horizontal wave
                 Math.sin(Math.sqrt(75 * (cx * cx + cy * cy) + time3)) + // Radial wave
                 Math.cos(Math.sqrt(dx * dx + dy * dy) - time4)          // Circular motion
