@@ -10,7 +10,7 @@
  *   and a dynamically drifting center of gravity for visual variation.
  * 
  *   Inspired by the plasma developed by Sean (mrkite) at https://github.com/mrkite/demofx,
- *   with fixes for full 255 color usage in the color computation.
+ *   with fixes for full 256 color usage in the color computation.
  */
 
 import { Blitter } from "../../engine/blitter.js";              // Blitter class for managing canvas operations
