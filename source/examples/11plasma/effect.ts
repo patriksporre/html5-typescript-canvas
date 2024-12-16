@@ -50,7 +50,7 @@ export function initialize(blitter?: Blitter) {
  * I spent a Sunday afternoon experimenting with various expressions for the plasma and
  * finally settled on an approach inspired by Sean (mrkite) at https://github.com/mrkite/demofx.
  * Thanks for the inspiration, Sean! I also fixed the color computation to fully utilize
- * all 255 colors for a smoother effect.
+ * all 256 colors for a smoother effect.
  * 
  * @param {Blitter} blitter - Instance of the Blitter class for handling canvas drawing
  * @param {number} elapsedTime - The total elapsed time since the effect started, in seconds
