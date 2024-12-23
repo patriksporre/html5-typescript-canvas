@@ -40,7 +40,7 @@ export class Vector2 {
     /**
      * Creates a new Vector2 instance with the same x and y values as this vector.
      * 
-     * @returns {Vector2} A new Vector2 object with identical x and y coordinates.
+     * @returns {Vector2} A new Vector2 object with identical x and y coordinates
      */
     public clone(): Vector2 {
         return new Vector2({x: this.x, y: this.y});
