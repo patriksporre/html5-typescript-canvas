@@ -3,7 +3,6 @@
  * File: particle.ts
  * Author: Patrik Sporre
  * License: MIT
- * 
  * Description:
  *   Represents a basic particle with position, velocity, and color. 
  *   The particle can be updated over time based on its velocity and 
@@ -36,13 +35,16 @@ export class Particle {
     }
 
     /**
-     * Updates the particle's position based on its velocity.
+     * Updates the particle's position based on its velocity and elapsed time.
      * 
-     * This method adds the velocity vector to the current position vector,
-     * simulating movement over time.
+     * This method calculates the particle's movement by scaling its velocity 
+     * with the provided delta time and adding the result to the current position. 
+     * The use of delta time ensures consistent movement regardless of frame rate.
+     * 
+     * @param {number} deltaTime - The time elapsed since the last update, in seconds. 
      */
-    public update(): void {
-        this.position.add(this.velocity);
+    public update(deltaTime: number): void {
+        this.position.add(this.velocity.clone().scale(deltaTime));
     }
 
     /**
@@ -51,6 +53,6 @@ export class Particle {
      * @param {Blitter} blitter - The Blitter instance used for drawing operations.
      */
     public render(blitter: Blitter): void {
-        blitter.setPixel(this.position.x, this.position.y, this.color);
+        blitter.setPixel(this.position.x, this.position.y, this.color, false);
     }
 }
