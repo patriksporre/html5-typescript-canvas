@@ -33,8 +33,9 @@ export function initialize(blitter?: Blitter) {
  * 
  * @param {Blitter} blitter - An instance of the Blitter class for canvas operations
  * @param {number} elapsedTime - The total elapsed time since the effect started, in seconds
+ * @param {number} deltaTime - The time elapsed since the last frame, in seconds
  */
-export function render(blitter: Blitter, elapsedTime: number) {
+export function render(blitter: Blitter, elapsedTime: number, deltaTime: number) {
     pointer = 0;
 
     for (let y = 0; y < height; y++) {
