@@ -44,7 +44,6 @@ export class Particle {
      * @param {number} deltaTime - The time elapsed since the last update, in seconds. 
      */
     public update(deltaTime: number): void {
-        this.position.add(this.velocity.clone().scale(deltaTime));
     }
 
     /**
