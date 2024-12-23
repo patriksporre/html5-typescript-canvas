@@ -11,8 +11,8 @@
  *   from a given path.
  */
 
-import { Blitter } from './blitter.js';             // Blitter class for canvas operations
-import { Effect } from "./effect.js";           // Effect interface defining effect structure
+import { Blitter } from './blitter.js';     // Blitter class for canvas operations
+import { Effect } from "./effect.js";       // Effect interface defining effect structure
 
 // Singleton instance of the Blitter for rendering operations
 const blitter: Blitter = Blitter.getInstance();
@@ -53,16 +53,16 @@ export async function loader(path: string) {
      * @param {number} timestamp - Current timestamp provided by requestAnimationFrame
      */
     function main(timestamp: number) {
-        const delta = (timestamp - lastTimestamp) / 1000; // Time difference in seconds
+        const deltaTime = (timestamp - lastTimestamp) / 1000; // Time difference in seconds
         lastTimestamp = timestamp;
 
         // Update elapsed time only if the loop is running
         if (running) {
-            elapsedTime = elapsedTime + delta;
+            elapsedTime = elapsedTime + deltaTime;
         }
 
         // Call the effect's render method
-        effect.render(blitter, elapsedTime);
+        effect.render(blitter, elapsedTime, deltaTime);
 
         // Blit the updated frame to the canvas
         blitter.blit();
