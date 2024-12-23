@@ -33,5 +33,5 @@ export interface Effect {
      * @param {Blitter} blitter - An instance of the Blitter class for canvas operations
      * @param {number} elapsedTime - The total elapsed time since the effect started, in seconds
      */
-    render(blitter: Blitter, elapsedTime: number): void;
+    render(blitter: Blitter, elapsedTime: number, deltaTime: number): void;
 }
