@@ -53,6 +53,5 @@ export class Particle {
      * @param {Blitter} blitter - The Blitter instance used for drawing operations.
      */
     public render(blitter: Blitter): void {
-        blitter.setPixel(this.position.x, this.position.y, this.color, false);
     }
 }
