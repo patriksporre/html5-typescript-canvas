@@ -41,6 +41,57 @@ export class Vector3 {
     }
 
     /**
+     * Adds the components of another vector to this vector.
+     * 
+     * This method modifies the current vector in place by adding the corresponding
+     * components of the provided vector (other) to this vector's components.
+     * 
+     * @param {Vector3} other - The vector to add to this vector.
+     * @returns {this} The updated vector (this instance) for chaining
+     */
+    public add(other: Vector3): this {
+        this.x = this.x + other.x;
+        this.y = this.y + other.y;
+        this.z = this.z + other.z;
+
+        return this;
+    }
+
+    /**
+     * Subtracts the components of another vector from this vector.
+     * 
+     * This method modifies the current vector in place by subtracting the corresponding
+     * components of the provided vector (other) from this vector's components.
+     * 
+     * @param {Vector3} other - The vector to subtract from this vector.
+     * @returns {this} The updated vector (this instance) for chaining
+     */
+    public sub(other: Vector3): this {
+        this.x = this.x - other.x;
+        this.y = this.y - other.y;
+        this.z = this.z - other.z;
+
+        return this;
+    }
+
+    /**
+     * Scales this vector by a scalar value.
+     * 
+     * This method modifies the current vector in place by multiplying each component
+     * of the vector by the provided scalar.
+     * 
+     * @param {number} scalar - The value to scale the vector by.
+     * @returns {this} The updated vector (this instance) for chaining.
+     */
+    public scale(scalar: number): this {
+        this.x = this.x * scalar;
+        this.y = this.y * scalar;
+        this.z = this.z * scalar;
+
+        return this;
+    }
+
+    /**
      * Creates a new Vector3 instance with the same x, y and z values as this vector.
      * 
      * @returns {Vector3} A new Vector3 object with identical x, y and z coordinates

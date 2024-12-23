@@ -38,6 +38,54 @@ export class Vector2 {
     }
 
     /**
+     * Adds the components of another vector to this vector.
+     * 
+     * This method modifies the current vector in place by adding the corresponding
+     * components of the provided vector (other) to this vector's components.
+     * 
+     * @param {Vector2} other - The vector to add to this vector.
+     * @returns {this} The updated vector (this instance) for chaining
+     */
+    public add(other: Vector2): this {
+        this.x = this.x + other.x;
+        this.y = this.y + other.y;
+
+        return this;
+    }
+
+    /**
+     * Subtracts the components of another vector from this vector.
+     * 
+     * This method modifies the current vector in place by subtracting the corresponding
+     * components of the provided vector (other) from this vector's components.
+     * 
+     * @param {Vector2} other - The vector to subtract from this vector.
+     * @returns {this} The updated vector (this instance) for chaining
+     */
+    public sub(other: Vector2): this {
+        this.x = this.x - other.x;
+        this.y = this.y - other.y;
+
+        return this;
+    }
+
+    /**
+     * Scales this vector by a scalar value.
+     * 
+     * This method modifies the current vector in place by multiplying each component
+     * of the vector by the provided scalar.
+     * 
+     * @param {number} scalar - The value to scale the vector by.
+     * @returns {this} The updated vector (this instance) for chaining.
+     */
+    public scale(scalar: number): this {
+        this.x = this.x * scalar;
+        this.y = this.y * scalar;
+
+        return this;
+    }
+
+    /**
      * Creates a new Vector2 instance with the same x and y values as this vector.
      * 
      * @returns {Vector2} A new Vector2 object with identical x and y coordinates
