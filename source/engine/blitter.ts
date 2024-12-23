@@ -139,6 +139,15 @@ export class Blitter {
         return this.backbuffer32;
     }
 
+    /**
+     * Applies a filter to the backbuffer or a specified buffer.
+     * 
+     * This method processes the provided buffer (defaulting to the current backbuffer) using a specified filter. 
+     * The filter can perform operations such as blurring, sharpening, or color adjustments.
+     * 
+     * @param {Filter} filter - The filter instance to be applied. The filter must have a process method.
+     * @param {Uint32Array} backbuffer - The backbuffer to modify (default is the main backbuffer)
+     */
     public applyFilter(filter: Filter, backbuffer: Uint32Array = this.backbuffer32): void {
         filter.process(backbuffer, this.clipping.maxX, this.clipping.maxY);
     }
