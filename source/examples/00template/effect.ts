@@ -9,13 +9,9 @@
 
 import { Blitter } from "../../engine/blitter.js";              // Blitter class for managing canvas operations
 import { Color4 } from "../../engine/utils/color/color4.js";    // Color4 utility class for RGBA colors
-import { clamp } from "../../engine/utils/helper.js";
 
 let width: number;          // Screen width in pixels
 let height: number;         // Screen height in pixels
-
-let centerX: number;        // Horizontal center of the screen
-let centerY: number;        // Vertical center of the screen
 
 let pointer: number;        // Pointer to the backbuffer
 
@@ -30,10 +26,6 @@ export function initialize(blitter?: Blitter) {
     // Set canvas dimensions
     width = blitter?.clipping.maxX!;    // Maximum x-coordinate for clipping
     height = blitter?.clipping.maxY!;   // Maximum y-coordinate for clipping
-    
-    // Compute screen center
-    centerX = width / 2;
-    centerY = height / 2;
 }
 
 /**
