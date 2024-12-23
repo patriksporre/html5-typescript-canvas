@@ -12,20 +12,20 @@
 import { Blitter } from "../../engine/blitter.js";                  // Blitter class for managing canvas operations
 import { Color4 } from "../../engine/utils/color/color4.js";        // Color4 utility class for RGBA colors
 import { Vector3 } from "../../engine/utils/math/vector3.js";       // Vector3 class for position and velocity
-import { Particle } from "../../engine/utils/particle/particle.js"; // Particle class for star representation
 
-import { randomRange } from "../../engine/utils/helper.js";     // Utility function for generating random numbers
+import { randomRange } from "../../engine/utils/helper.js";         // Utility function for generating random numbers
+
+import { Star2D } from "./star2d.js";
 
 let width: number;              // Screen width in pixels
 let height: number;             // Screen height in pixels
 
-const stars: Particle[] = [];   // Array of particles representing stars
+const stars: Star2D[] = [];     // Array of particles representing stars
 const count: number = 400;      // Total number of stars in the field
 
 const slowest: number = 1;      // Minimum horizontal speed for stars
 const fastest: number = 5;      // Maximum horizontal speed for stars
-
-const wantedFPS: number = 60;   // The number of frames per second we aim for
+const speed: number = 60;       // The number of frames per second we aim for
 
 /**
  * Initializes the 2D star field effect.
@@ -50,13 +50,13 @@ export function initialize(blitter?: Blitter) {
         });
 
         const velocity: Vector3 = new Vector3({
-            x: randomRange(slowest, fastest) * wantedFPS // Random speed for parallax effect
+            x: randomRange(slowest, fastest) * speed // Random speed for parallax effect
         });
 
         const shade: number = randomRange(128, 255); // Brightness level (128-255)
         const color: Color4 = new Color4({ red: shade, green: shade, blue: shade });
 
-        stars.push(new Particle(position, velocity, color));
+        stars.push(new Star2D(position, velocity, color, width, height, slowest, fastest, speed));
     }
 }
 
@@ -77,13 +77,6 @@ export function render(blitter: Blitter, elapsedTime: number, deltaTime: number)
     // Update and render each star
     for (const star of stars) {
         star.update(deltaTime);
-
-        // Wrap around when a star exits the screen
-        if (star.position.x >= width) {
-            star.position.x = 0; // Reset to the left edge
-            star.position.y = Math.random() * height; // Random vertical position
-            star.velocity.x = randomRange(slowest, fastest) * wantedFPS; // New random speed
-        }
 
         star.render(blitter);
     }
