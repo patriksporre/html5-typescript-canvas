@@ -54,7 +54,7 @@ export class Star2D extends Particle {
      * @param {number} deltaTime - The time elapsed since the last frame, in seconds.
      */
     public update(deltaTime: number): void {
-        super.update(deltaTime);
+        this.position.add(this.velocity.clone().scale(deltaTime));
 
         // Wrap around when the star exits the right edge of the screen
         if (this.position.x >= this.width) {
