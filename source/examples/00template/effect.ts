@@ -41,9 +41,11 @@ export function render(blitter: Blitter, elapsedTime: number, deltaTime: number)
     for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
             // Generate XOR pattern
-            color.red = x ^ y;
-            color.green = x ^ y;
-            color.blue = x ^ y;
+            const shade: number = x ^ y;
+
+            color.red = shade;
+            color.green = shade;
+            color.blue = shade
 
             // Write the pixel color to the backbuffer
             blitter.backbuffer[pointer++] = color.toAABBGGRR();
