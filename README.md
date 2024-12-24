@@ -148,6 +148,22 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 [View source code](./source/examples/12moire/)
 
+### 14. Starfield (2D)
+
+**Description:** A 2D star field effect where stars move horizontally with random speeds and brightness. Stars wrap around the screen, reappearing on the left side with new properties when they exit on the right.
+
+![Screenshot](./source/examples/13stars2d/screenshot.jpg)
+
+[View source code](./source/examples/13stars2d/)
+
+### 15. Starfield (3D)
+
+**Description:** a 3D star field effect where stars move towards the viewer from random positions in 3D space. Closer stars appear brighter, and when stars reach the screen or move outside the viewable area, they are reset to a random position at maximum depth.
+
+![Screenshot](./source/examples/14stars3d/screenshot.jpg)
+
+[View source code](./source/examples/14stars3d/)
+
 ## License
 This project is licensed under the MIT License.
 
