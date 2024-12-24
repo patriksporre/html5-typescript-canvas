@@ -132,6 +132,14 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 [View source code](./source/examples/10fire/)
 
+### 12. Plasma
+
+**Description:** A classic dynamic plasma effect using a smooth color palette and sinusoidal calculations. The plasma effect includes time-based motion and a dynamically drifting center of gravity for visual variation. Inspired by the plasma developed by Sean (@mrkite) at https://github.com/mrkite/demofx, with fixes for full 256 color usage in the color computation.
+
+![Screenshot](./source/examples/11plasma/screenshot.jpg)
+
+[View source code](./source/examples/11plasma/)
+
 ## License
 This project is licensed under the MIT License.
 
