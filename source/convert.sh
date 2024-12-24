@@ -1,0 +1,1 @@
+find ./examples -type f -name "*.png" -exec bash -c 'for file; do magick "$file" -quality 80 "${file%.png}.jpg"; done' bash {} +
