@@ -42,6 +42,18 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 - To stop the **TypeScript watcher**, press `ctrl + c` in the terminal running `tsc --watch`
 - To stop the **Local Web server**, press `ctrl + c` in the terminal running `http-server`
 
+## Effects
+
+### 1. Template
+
+**Description:** Generates an XOR pattern all over the screen. A good starting point for implementing another effect.
+
+![Screenshot](./source/examples/00template/screenshot.png)
+
+[View Source Code](./source/examples/00template/)
+
+### 2. Canvas
+
 ## License
 This project is licensed under the MIT License.
 
