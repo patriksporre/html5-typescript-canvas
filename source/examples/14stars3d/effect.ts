@@ -18,17 +18,19 @@ import { Particle } from "../../engine/utils/particle/particle.js"; // Particle 
 
 import { randomRange } from "../../engine/utils/helper.js";         // Utility function for generating random numbers
 
+import { Star3D } from "./star3d.js";
+
 let width: number;              // Screen width in pixels
 let height: number;             // Screen height in pixels
 
 let centerX: number;            // X-coordinate of the screen center
 let centerY: number;            // Y-coordinate of the screen center
 
-const stars: Particle[] = [];   // Array of particles representing stars
+const stars: Star3D[] = [];     // Array of particles representing stars
 const count: number = 400;      // Total number of stars in the field
 
-const minZ: number = 0;         // Minimum depth (stars reappear when reaching this depth)
-const maxZ: number = 255;       // Maximum depth (furthest stars start here)
+const near: number = 1;         // Near plane (i.e. minimum depth) (stars reappear when reaching this depth)
+const far: number = 255;        // Far plan (i.e maximum depth) (furthest stars start here)
 
 const minV: number = 10;        // Minimum speed for stars in the Z-direction
 const maxV: number = 100;       // Maximum speed for stars in the Z-direction
@@ -57,7 +59,8 @@ export function initialize(blitter?: Blitter) {
         const position: Vector3 = new Vector3({
             x: randomRange(-centerX, centerX),  // Random X position
             y: randomRange(-centerY, centerY),  // Random Y position
-            z: randomRange(minZ, maxZ)          // Random depth (Z position)
+            z: randomRange(near, far)           // Random depth (Z position)
+            //z: far
         });
 
         const velocity: Vector3 = new Vector3({
@@ -66,7 +69,7 @@ export function initialize(blitter?: Blitter) {
 
         const color: Color4 = new Color4({ caching: false }); // Color for each star
 
-        stars.push(new Particle(position, velocity, color));
+        stars.push(new Star3D(position, velocity, color, width, height, near, far));
     }
 }
 
@@ -90,32 +93,10 @@ export function render(blitter: Blitter, elapsedTime: number, deltaTime: number)
         // Update the star's position based on its velocity
         star.update(deltaTime);
 
-        // Reset stars that move too close to the viewer
-        if (star.position.z <= minZ) {
-            star.position.x = randomRange(-centerX, centerX);   // Reset to random X position
-            star.position.y = randomRange(-centerY, centerY);   // Reset to random Y position
-            star.position.z = maxZ;                             // Reset to maximum depth
-        }
+        // Project the star to screen space
+        star.project(blitter.clipping);
 
-        // Project the 3D position to 2D screen coordinates
-        const x: number = (star.position.x / star.position.z) * centerX + centerX;
-        const y: number = (star.position.y / star.position.z) * centerY + centerY;
-
-        // Reset stars that move outside the visible screen
-        if (x < 0 || x >= width || y < 0 || y >= height) {
-            star.position.x = randomRange(-centerX, centerX);
-            star.position.y = randomRange(-centerY, centerY);
-            star.position.z = maxZ;
-            continue;
-        }
-
-        // Calculate brightness based on depth (closer stars are brighter)
-        const shade: number = 255 - star.position.z; // Inverse of depth for brightness
-        star.color.red = shade;
-        star.color.green = shade;
-        star.color.blue = shade;
-
-        // Render the star on the screen
-        blitter.setPixel(x, y, star.color);
+        // Render the star on screen
+        star.render(blitter);
     }
 }
