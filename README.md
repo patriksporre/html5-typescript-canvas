@@ -56,7 +56,7 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 **Description:** Clears the background of the canvas by turning it blue. Not much of an effect is it?
 
-![Screenshot](./source/examples/01canvas/screenshot.png)
+![Screenshot](./source/examples/01canvas/screenshot.jpg)
 
 [View source code](./source/examples/01canvas/)
 
@@ -64,7 +64,7 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 **Description:** Renders the "ant war" effect with randomized brightness, dynamic noise, and wavy distortions. The effect mimics the look of an analog TV signal with no input.
 
-![Screenshot](./source/examples/02pixels/screenshot.png)
+![Screenshot](./source/examples/02pixels/screenshot.jpg)
 
 [View source code](./source/examples/02pixels/)
 
@@ -72,7 +72,7 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 **Description:** Renders the dynamic effect by drawing a randomly colored rectangle on the canvas.
 
-![Screenshot](./source/examples/03rectangles/screenshot.png)
+![Screenshot](./source/examples/03rectangles/screenshot.jpg)
 
 [View source code](./source/examples/03rectangles/)
 
