@@ -86,11 +86,19 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 ### 6. Fade (alpha channel)
 
-**Description:** Loads the image asynchronously and draws it onto the canvas, then an alpha blending effect where an image fades in and out over time using a sinusoidal curve for the alpha channel The image is the classic "einstein" by RA from the demo group Nooon.
+**Description:** Loads the image asynchronously and draws it onto the canvas, then an alpha blending effect where an image fades in and out over time using a sinusoidal curve for the alpha channel. The image is the classic "einstein" by RA from the demo group Nooon.
 
 ![Screenshot](./source/examples/05fadealpha/screenshot.jpg)
 
 [View source code](./source/examples/05fadealpha/)
+
+### 7. Fade (RGB channels)
+
+**Description:** Loads the image asynchronously and draws it onto the canvas, then a blending effect where an image fades in and out over time using a sinusoidal curve for the RGB channels. The image is the classic "einstein" by RA from the demo group Nooon.
+
+![Screenshot](./source/examples/06fadergb/screenshot.jpg)
+
+[View source code](./source/examples/06fadergb/)
 
 ## License
 This project is licensed under the MIT License.
