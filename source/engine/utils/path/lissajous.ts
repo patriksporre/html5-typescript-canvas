@@ -59,7 +59,7 @@ export class LissajousCurve {
         // Center of the drawing area
         const center: Vector2 = new Vector2({ x: width / 2, y: height / 2 });
 
-        // Determines scaling based on the `uniform` flag
+        // Determines scaling based on the uniform flag
         const dimensions: Vector2 = uniform
         ? new Vector2({
             x: Math.min(center.x, center.y) * scale,
@@ -84,7 +84,6 @@ export class LissajousCurve {
      */
     public update(deltaTime: number, speed: number): { x: number; y: number } {
         // Increment time using deltaTime to control the speed of traversal
-        //this.time = this.time + deltaTime * this.step;
         this.time = this.time + deltaTime * speed;
 
         // Wrap around time to stay within the bounds of the track array
