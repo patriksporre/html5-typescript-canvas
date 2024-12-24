@@ -134,11 +134,19 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 ### 12. Plasma
 
-**Description:** A classic dynamic plasma effect using a smooth color palette and sinusoidal calculations. The plasma effect includes time-based motion and a dynamically drifting center of gravity for visual variation. Inspired by the plasma developed by Sean (@mrkite) at https://github.com/mrkite/demofx, with fixes for full 256 color usage in the color computation.
+**Description:** A classic dynamic plasma effect using a smooth color palette and sinusoidal calculations. The plasma effect includes time-based motion and a dynamically drifting center of gravity for visual variation. Inspired by the plasma developed by Sean (mrkite) at https://github.com/mrkite/demofx, with fixes for full 256 color usage in the color computation.
 
 ![Screenshot](./source/examples/11plasma/screenshot.jpg)
 
 [View source code](./source/examples/11plasma/)
+
+### 13. Moire
+
+**Description:** A dynamic moiré effect using two moving foci. The interference pattern evolves over time.
+
+![Screenshot](./source/examples/12moire/screenshot.jpg)
+
+[View source code](./source/examples/12moire/)
 
 ## License
 This project is licensed under the MIT License.
