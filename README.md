@@ -76,6 +76,14 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 [View source code](./source/examples/03rectangles/)
 
+### 5. Image
+
+**Description:** Loads the image asynchronously and draws it onto the canvas. The image is the classic "einstein" by RA from the demo group Nooon.
+
+![Screenshot](./source/examples/03rectangles/screenshot.jpg)
+
+[View source code](./source/examples/04image/)
+
 ## License
 This project is licensed under the MIT License.
 
