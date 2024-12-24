@@ -46,13 +46,19 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 ### 1. Template
 
-**Description:** Generates an XOR pattern all over the screen. A good starting point for implementing another effect.
+**Description:** Generates an XOR pattern all over the canvas. A good starting point for implementing another effect.
 
 ![Screenshot](./source/examples/00template/screenshot.png)
 
-[View Source Code](./source/examples/00template/)
+[View source code](./source/examples/00template/)
 
 ### 2. Canvas
+
+**Description:** Clears the background of the canvas by turning it blue. Not much of an effect is it?
+
+![Screenshot](./source/examples/01canvas/screenshot.png)
+
+[View source code](./source/examples/01canvas/)
 
 ## License
 This project is licensed under the MIT License.
