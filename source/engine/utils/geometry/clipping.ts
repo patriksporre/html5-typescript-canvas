@@ -64,11 +64,11 @@ export class Clipping {
   }
 
   /**
-   * Checks if a point is within the clipping area.
+   * Checks if a point is inside the clipping area.
    *
    * @param x - The X coordinate of the point
    * @param y - The Y coordinate of the point
-   * @returns True if the point is within the area, otherwise false
+   * @returns True if the point is inside, otherwise false
    */
   public inside(x: number, y: number): boolean {
     return (
@@ -78,4 +78,20 @@ export class Clipping {
       y <= this.bounds[3]
     );
   }
+
+  /**
+   * Checks if a point is outside the clipping area.
+   *
+   * @param x - The X coordinate of the point
+   * @param y - The Y coordinate of the point
+   * @returns True if the point is outside, otherwise false
+   */
+    public outside(x: number, y: number): boolean {
+      return (
+        x < this.bounds[0] ||
+        x >= this.bounds[2] ||
+        y < this.bounds[1] ||
+        y >= this.bounds[3]
+      );
+    }
 }
