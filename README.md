@@ -108,13 +108,29 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 [View source code](./source/examples/07zoom/)
 
-### 9. Zoom (bi)
+### 9. Zoom (Bilinear)
 
 **Description:** A zoom effect where the image oscillates between a minimum and maximum zoom level, centering the zoom at the middle of the screen. The image is scaled smoothly using bilinear interpolation.
 
 ![Screenshot](./source/examples/08zoombi/screenshot.jpg)
 
 [View source code](./source/examples/08zoombi/)
+
+### 10. Grayscale
+
+**Description:** Showcasing a simple filter effect where the image is turned into grayscale before being drawn to the canvas.
+
+![Screenshot](./source/examples/09grayscale/screenshot.jpg)
+
+[View source code](./source/examples/09grayscale/)
+
+### 11. Fire
+
+**Description:** The classic fire effect.
+
+![Screenshot](./source/examples/10fire/screenshot.jpg)
+
+[View source code](./source/examples/10fire/)
 
 ## License
 This project is licensed under the MIT License.
