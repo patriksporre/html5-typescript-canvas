@@ -80,9 +80,17 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 **Description:** Loads the image asynchronously and draws it onto the canvas. The image is the classic "einstein" by RA from the demo group Nooon.
 
-![Screenshot](./source/examples/03rectangles/screenshot.jpg)
+![Screenshot](./source/examples/04image/screenshot.jpg)
 
 [View source code](./source/examples/04image/)
+
+### 6. Fade (alpha channel)
+
+**Description:** Loads the image asynchronously and draws it onto the canvas, then an alpha blending effect where an image fades in and out over time using a sinusoidal curve for the alpha channel The image is the classic "einstein" by RA from the demo group Nooon.
+
+![Screenshot](./source/examples/05fadealpha/screenshot.jpg)
+
+[View source code](./source/examples/05fadealpha/)
 
 ## License
 This project is licensed under the MIT License.
