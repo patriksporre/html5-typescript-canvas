@@ -1,6 +1,6 @@
 /**
  * Project: html5-typescript-canvas
- * File: effect.ts
+ * File: star2d.ts
  * Author: Patrik Sporre
  * License: MIT
  * Description:
