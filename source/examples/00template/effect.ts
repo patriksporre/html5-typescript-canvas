@@ -23,7 +23,7 @@ const color: Color4 = new Color4({ caching: false }); // Reusable Color4 object 
 export function initialize(blitter?: Blitter) {
     console.log('00template | [replace]');
 
-    // Set canvas dimensions
+    // Get canvas dimensions
     width = blitter?.clipping.maxX!;    // Maximum x-coordinate for clipping
     height = blitter?.clipping.maxY!;   // Maximum y-coordinate for clipping
 }
