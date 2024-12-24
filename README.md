@@ -48,7 +48,7 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 **Description:** Generates an XOR pattern all over the canvas. A good starting point for implementing another effect.
 
-![Screenshot](./source/examples/00template/screenshot.png)
+![Screenshot](./source/examples/00template/screenshot.jpg)
 
 [View source code](./source/examples/00template/)
 
