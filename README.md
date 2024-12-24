@@ -158,11 +158,19 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 ### 15. Starfield (3D)
 
-**Description:** a 3D star field effect where stars move towards the viewer from random positions in 3D space. Closer stars appear brighter, and when stars reach the screen or move outside the viewable area, they are reset to a random position at maximum depth.
+**Description:** A 3D star field effect where stars move towards the viewer from random positions in 3D space. Closer stars appear brighter, and when stars reach the screen or move outside the viewable area, they are reset to a random position at maximum depth.
 
 ![Screenshot](./source/examples/14stars3d/screenshot.jpg)
 
 [View source code](./source/examples/14stars3d/)
+
+### 16. Bump mapping (the core principle)
+
+**Description:** A 2D bump mapping effect using a generated height map and a moving light source. The light source simulates movement across the height map, creating dynamic shading.
+
+![Screenshot](./source/examples/15bump/screenshot.jpg)
+
+[View source code](./source/examples/15bump/)
 
 ## License
 This project is licensed under the MIT License.
