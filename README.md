@@ -60,6 +60,22 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 [View source code](./source/examples/01canvas/)
 
+### 3. Pixels
+
+**Description:** Renders the "ant war" effect with randomized brightness, dynamic noise, and wavy distortions. The effect mimics the look of an analog TV signal with no input.
+
+![Screenshot](./source/examples/02pixels/screenshot.png)
+
+[View source code](./source/examples/02pixels/)
+
+### 4. Rectangles
+
+**Description:** Renders the dynamic effect by drawing a randomly colored rectangle on the canvas.
+
+![Screenshot](./source/examples/03rectangles/screenshot.png)
+
+[View source code](./source/examples/03rectangles/)
+
 ## License
 This project is licensed under the MIT License.
 
