@@ -86,7 +86,7 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 ### 6. Fade (alpha channel)
 
-**Description:** Loads the image asynchronously and draws it onto the canvas, then an alpha blending effect where an image fades in and out over time using a sinusoidal curve for the alpha channel. The image is the classic "einstein" by RA from the demo group Nooon.
+**Description:** An alpha blending effect where an image fades in and out over time using a sinusoidal curve for the alpha channel.
 
 ![Screenshot](./source/examples/05fadealpha/screenshot.jpg)
 
@@ -94,11 +94,27 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 ### 7. Fade (RGB channels)
 
-**Description:** Loads the image asynchronously and draws it onto the canvas, then a blending effect where an image fades in and out over time using a sinusoidal curve for the RGB channels. The image is the classic "einstein" by RA from the demo group Nooon.
+**Description:** A blending effect where an image fades in and out over time using a sinusoidal curve for the RGB channels.
 
 ![Screenshot](./source/examples/06fadergb/screenshot.jpg)
 
 [View source code](./source/examples/06fadergb/)
+
+### 8. Zoom
+
+**Description:** A zoom effect where the image oscillates between a minimum and maximum zoom level, centering the zoom at the middle of the screen.
+
+![Screenshot](./source/examples/07zoom/screenshot.jpg)
+
+[View source code](./source/examples/07zoom/)
+
+### 9. Zoom (bi)
+
+**Description:** A zoom effect where the image oscillates between a minimum and maximum zoom level, centering the zoom at the middle of the screen. The image is scaled smoothly using bilinear interpolation.
+
+![Screenshot](./source/examples/08zoombi/screenshot.jpg)
+
+[View source code](./source/examples/08zoombi/)
 
 ## License
 This project is licensed under the MIT License.
