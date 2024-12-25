@@ -172,6 +172,14 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 [View source code](./source/examples/15bump/)
 
+### 17. Bump mapping (image)
+
+**Description:** A dynamic bump mapping effect over an image. A moving light source traverses a Lissajous curve to create a bumpy lighting effect, emphasizing depth and texture based on a height map derived from the image.
+
+![Screenshot](./source/examples/16bumpimage/screenshot.jpg)
+
+[View source code](./source/examples/16bumpimage/)
+
 ## License
 This project is licensed under the MIT License.
 
