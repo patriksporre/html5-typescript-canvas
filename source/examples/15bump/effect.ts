@@ -90,13 +90,11 @@ export function render(blitter: Blitter, elapsedTime: number, deltaTime: number)
             const dx: number = heightMap[index + 1] - heightMap[index - 1];
             const dy: number = heightMap[index + width] - heightMap[index - width];
 
+            // Calculate the lighting intensity using the dot product.
+            const intensity: number = dx * light.x + dy * light.y;
+
             // Calculate brightness based on light source direction.
-            //
-            // The brightness is determined by the dot product of the height gradients (dx and dy) 
-            // and the light source direction (light.x and light.y).
-            //
-            // This creates the illusion of highlights and shadows based on the simulated light's position.
-            const brightness: number = Math.max(0, Math.min(255, dx * light.x + dy * light.y));
+            const brightness: number = Math.max(0, Math.min(255, intensity));
 
             // Set pixel color based on brightness
             color.red = brightness;
