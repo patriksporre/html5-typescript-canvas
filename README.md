@@ -174,7 +174,7 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 ### 17. Bump mapping (image)
 
-**Description:** A dynamic bump mapping effect over an image. A moving light source traverses a Lissajous curve to create a bumpy lighting effect, emphasizing depth and texture based on a height map derived from the image.
+**Description:** A dynamic bump mapping effect over an image that emphasizes depth and texture using a height map derived from the image. A moving light source, traversing a Lissajous curve, interacts dynamically with the height map to create an engaging interplay of light and shadow. The implementation includes three bump mapping variants: real-time per-pixel computation (default, key "1"), a precomputed Phong map for combined diffuse and specular lighting (key "2"), and a precomputed environment map for efficient lighting (key "3").
 
 ![Screenshot](./source/examples/16bumpimage/screenshot.jpg)
 
