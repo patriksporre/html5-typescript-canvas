@@ -384,30 +384,3 @@ function renderWithMap(blitter: Blitter, deltaTime: number, map: Uint8Array, map
         }
     }
 }
-
-
-
-
-
-
-function renderEnvironmentMapPreview(blitter: Blitter) {
-    const uint32EnvMap = convertUint8ToUint32(environmentMap);
-    blitter.drawBuffer(256, 256, uint32EnvMap, 0, 0); // Draw the environment map at (0, 0)
-}
-
-function renderPhongMapPreview(blitter: Blitter) {
-    const uint32EnvMap = convertUint8ToUint32(phongMap);
-    blitter.drawBuffer(256, 256, uint32EnvMap, 0, 0); // Draw the environment map at (0, 0)
-}
-
-function convertUint8ToUint32(envMap: Uint8Array): Uint32Array {
-    const size = envMap.length;
-    const uint32Array = new Uint32Array(size);
-
-    for (let i = 0; i < size; i++) {
-        const intensity = envMap[i]; // Grayscale intensity
-        uint32Array[i] = (255 << 24) | (intensity << 16) | (intensity << 8) | intensity; // ARGB format
-    }
-
-    return uint32Array;
-}
