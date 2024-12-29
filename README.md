@@ -204,6 +204,14 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 [View source code](./source/examples/19twirl/)
 
+### 21. Metaballs
+
+**Description:** a 2D metaballs effect where metaballs move along dynamic Lissajous paths and generate a scalar field visualized in grayscale. The effect emphasizes areas of overlapping influence between metaballs with brighter intensities, creating a visually dynamic simulation.
+
+![Screenshot](./source/examples/20metaballs/screenshot.jpg)
+
+[View source code](./source/examples/20metaballs/)
+
 ## License
 This project is licensed under the MIT License.
 
