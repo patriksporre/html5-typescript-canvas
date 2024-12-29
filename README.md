@@ -184,9 +184,9 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 **Description:** A classic rotozoomer effect where a tiled image rotates and zooms dynamically.
 
-![Screenshot](./source/examples/17rotozoomer/screenshot.jpg)
+![Screenshot](./source/examples/17rotozoom/screenshot.jpg)
 
-[View source code](./source/examples/17rotozoomer/)
+[View source code](./source/examples/17rotozoom/)
 
 ## License
 This project is licensed under the MIT License.
