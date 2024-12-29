@@ -79,14 +79,16 @@ export class LissajousCurve {
      */
     public update(deltaTime: number, speed: number): { x: number; y: number } {
         // Increment time using deltaTime and speed
-        this.time += deltaTime * speed;
+        this.time = (this.time + deltaTime * speed) % this.TWOPI;
 
-        // Ensure time stays within [0, 2π] for smooth looping
-        const t = this.time % this.TWOPI;
+        // Ensure time is within [0, 2π] with higher precision
+        if (this.time < 0) {
+            this.time += this.TWOPI;
+        }
 
         // Calculate the position directly using trigonometric functions
-        const x = Math.cos(this.a * t + this.delta) * this.dimensions.x + this.center.x;
-        const y = Math.cos(this.b * t) * this.dimensions.y + this.center.y;
+        const x = Math.cos(this.a * this.time + this.delta) * this.dimensions.x + this.center.x;
+        const y = Math.cos(this.b * this.time) * this.dimensions.y + this.center.y;
 
         return { x, y };
     }
