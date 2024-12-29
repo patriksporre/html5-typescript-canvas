@@ -196,6 +196,14 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 [View source code](./source/examples/18water/)
 
+### 20. Twirl
+
+**Description:** A dynamic twirl effect over an image. The effect distorts the image based on a center point, where the distortion intensity oscillates sinusoidally o create a "dancing" twirl motion.
+
+![Screenshot](./source/examples/19twirl/screenshot.jpg)
+
+[View source code](./source/examples/19twirl/)
+
 ## License
 This project is licensed under the MIT License.
 
