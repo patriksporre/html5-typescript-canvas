@@ -32,6 +32,9 @@ const minZoom: number = 0.5;     // Minimum zoom factor
 const maxZoom: number = 8.0;     // Maximum zoom factor
 const frequency: number = 0.2;   // Speed of zoom oscillation
 
+// Temporary pointer for indexing into the back buffer
+let pointer: number;
+
 /**
  * Initializes the effect.
  * 
@@ -66,10 +69,10 @@ export async function initialize(blitter?: Blitter) {
  * @param {number} elapsedTime - The total elapsed time since the effect started, in seconds
  */
 export function render(blitter: Blitter, elapsedTime: number) {
-    let backbufferIndex = 0; // Index to write to the backbuffer
+    pointer = 0; // Index to write to the backbuffer
 
     // Calculate the zoom factor using a sinusoidal function
-    const zoom = minZoom + (maxZoom - minZoom) * (0.5 * (1 + Math.sin(frequency * elapsedTime * Math.PI)));
+    const zoom: number = minZoom + (maxZoom - minZoom) * (0.5 * (1 + Math.sin(frequency * elapsedTime * Math.PI)));
     
     /**
     The inner loop maps each screen pixel to a corresponding image pixel based on the zoom factor.
@@ -85,26 +88,17 @@ export function render(blitter: Blitter, elapsedTime: number) {
     */
 
     for (let y = 0; y < blitter.clipping.maxY; y++) {
+        const v: number = Math.floor(((y - screenCenterY) / zoom) + imageCenterY); // get image-space y-coordinate
+        const rowImage: number = v * image.width; // pre-calculate the image row to avoid a multiplication per column
+
         for (let x = 0; x < blitter.clipping.maxX; x++) {
-            // Compute the image-space coordinates for the current screen pixel
-            const normalizedX = (x - screenCenterX) / zoom; // Distance from screen center, scaled by zoom
-            const normalizedY = (y - screenCenterY) / zoom;
+            const u: number = Math.floor(((x - screenCenterX) / zoom) + imageCenterX); // get image-space x-coordinate
 
-            const imageX = Math.floor(normalizedX + imageCenterX); // Map to image-space X coordinate
-            const imageY = Math.floor(normalizedY + imageCenterY); // Map to image-space Y coordinate
-
-            if (imageX >= 0 && imageX < image.width && imageY >= 0 && imageY < image.height) {
-                // Calculate the index of the corresponding pixel in the image
-                const imageIndex = imageY * image.width + imageX;
-
-                // Copy the pixel to the backbuffer
-                blitter.backbuffer[backbufferIndex] = image.data[imageIndex];
+            if (u >= 0 && u < image.width && v >= 0 && v < image.height) {
+                blitter.backbuffer[pointer++] = image.data[rowImage + u]; // draw image pixel to the back buffer
             } else {
-                // Fill with black if the mapped coordinates are out of image bounds
-                blitter.backbuffer[backbufferIndex] = background;
+                blitter.backbuffer[pointer++] = background; // out of bounds, draw a black pixel as background
             }
-
-            backbufferIndex++; // Move to the next pixel in the backbuffer
         }
     }
 }
