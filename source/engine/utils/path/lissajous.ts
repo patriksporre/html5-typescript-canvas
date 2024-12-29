@@ -69,7 +69,7 @@ export class LissajousCurve {
 
         // Precompute the track points
         for (let t = 0; t <= Math.PI * 2; t += step) {
-        const x = Math.sin(this.a * t + this.delta) * dimensions.x + center.x;
+        const x = Math.cos(this.a * t + this.delta) * dimensions.x + center.x;
         const y = Math.cos(this.b * t) * dimensions.y + center.y;
         this.track.push({ x, y });
         }
