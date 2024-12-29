@@ -4,7 +4,10 @@
  * Author: Patrik Sporre
  * License: MIT
  * Description:
- *   [replace]
+ *   Implements a 2D metaballs effect where metaballs move along dynamic
+ *   Lissajous paths and generate a scalar field visualized in grayscale.
+ *   The effect emphasizes areas of overlapping influence between metaballs
+ *   with brighter intensities, creating a visually dynamic simulation.
  */
 
 import { Blitter } from "../../engine/blitter.js";              // Blitter class for managing canvas operations
