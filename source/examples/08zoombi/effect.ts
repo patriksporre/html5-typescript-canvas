@@ -38,6 +38,9 @@ const minZoom: number = 0.5;     // Minimum zoom factor
 const maxZoom: number = 8.0;     // Maximum zoom factor
 const frequency: number = 0.2;   // Speed of zoom oscillation
 
+// Temporary pointer for indexing into the back buffer
+let pointer: number;
+
 /**
  * Initializes the effect.
  * 
@@ -70,7 +73,7 @@ export async function initialize(blitter?: Blitter) {
  * @param {number} elapsedTime - The total elapsed time since the effect started, in seconds
  */
 export function render(blitter: Blitter, elapsedTime: number) {
-    let backbufferIndex = 0; // Index to write to the backbuffer
+    pointer = 0; // Index to write to the backbuffer
 
     // Calculate the zoom factor using a sinusoidal function
     const zoom = minZoom + (maxZoom - minZoom) * (0.5 * (1 + Math.sin(frequency * elapsedTime * Math.PI)));
@@ -92,8 +95,8 @@ export function render(blitter: Blitter, elapsedTime: number) {
     for (let y = 0; y < blitter.clipping.maxY; y++) {
         for (let x = 0; x < blitter.clipping.maxX; x++) {
             // Map screen coordinates to fractional image coordinates
-            const imageX = (x - screenCenterX) / zoom + imageCenterX;
-            const imageY = (y - screenCenterY) / zoom + imageCenterY;
+            const imageX = ((x - screenCenterX) / zoom) + imageCenterX;
+            const imageY = ((y - screenCenterY) / zoom) + imageCenterY;
 
             // Decompose into integer and fractional parts
             const floorX = Math.floor(imageX); // Integer X coordinate (left)
@@ -132,10 +135,10 @@ export function render(blitter: Blitter, elapsedTime: number) {
                 color.red = blendedRed;
                 color.green = blendedGreen;
                 color.blue = blendedBlue;
-                blitter.backbuffer[backbufferIndex++] = color.toAABBGGRR();
+                blitter.backbuffer[pointer++] = color.toAABBGGRR();
             } else {
                 // Handle pixels outside the image boundaries by setting them to the background color
-                blitter.backbuffer[backbufferIndex++] = background;
+                blitter.backbuffer[pointer++] = background;
             }
         }
     }
