@@ -198,7 +198,7 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 ### 20. Twirl
 
-**Description:** A dynamic twirl effect over an image. The effect distorts the image based on a center point, where the distortion intensity oscillates sinusoidally o create a "dancing" twirl motion.
+**Description:** A dynamic twirl effect over an image. The effect distorts the image based on a center point, where the distortion intensity oscillates sinusoidally to create a "dancing" twirl motion.
 
 ![Screenshot](./source/examples/19twirl/screenshot.jpg)
 
