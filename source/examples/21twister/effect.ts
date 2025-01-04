@@ -37,7 +37,7 @@ window.addEventListener('keydown', switchActiveVariant);
 
 /**
  * Handles keydown events to switch between rendering variants.
- * Updates the `activeVariant` based on the pressed key.
+ * Updates the activeVariant variable based on the pressed key.
  * 
  * @param {KeyboardEvent} event - The keyboard event triggering the variant switch
  */
