@@ -206,11 +206,19 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 ### 21. Metaballs
 
-**Description:** a 2D metaballs effect where metaballs move along dynamic Lissajous paths and generate a scalar field visualized in grayscale. The effect emphasizes areas of overlapping influence between metaballs with brighter intensities, creating a visually dynamic simulation.
+**Description:** A 2D metaballs effect where metaballs move along dynamic Lissajous paths and generate a scalar field visualized in grayscale. The effect emphasizes areas of overlapping influence between metaballs with brighter intensities, creating a visually dynamic simulation.
 
 ![Screenshot](./source/examples/20metaballs/screenshot.jpg)
 
 [View source code](./source/examples/20metaballs/)
+
+### 22. Twister (single color)
+
+**Description:** A vertical twister effect, simulating a twisting block with four sides. The sides are colored differently (red, green, blue, yellow) and the twist animates based on a sinusoidal function. The amplitude of the twist oscillates over time, giving a dynamic visual effect. Use keys 1 to 4 to select twist.
+
+![Screenshot](./source/examples/21twister/screenshot.jpg)
+
+[View source code](./source/examples/21twister/)
 
 ## License
 This project is licensed under the MIT License.
