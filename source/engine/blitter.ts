@@ -19,6 +19,7 @@ import { Vector2 } from './utils/math/vector2.js';
 import { drawBuffer, drawBitmap } from './blitter/bitmap.js';
 import { getPixel, setPixel } from './blitter/pixel.js';
 import { rectangle } from './blitter/shapes.js';
+import { lineHorizontalAbsolute, lineHorizontalVector } from './blitter/line.js';
 
 /**
  * Parameters for initializing the canvas.
@@ -159,6 +160,34 @@ export class Blitter {
      * low-level operations like pixel manipulation. These utility functions are
      * imported from dedicated modules for better modularity and maintainability.
      */
+
+
+    /**
+     * Draw a horizontal line with desired color, supports optional clipping and custom backbuffers.
+     * 
+     * @param {number} x1 - The first x-coordinate (start point)
+     * @param {number} x2 - The second x-coordinate (end point)
+     * @param {number} y - The y-coordinate
+     * @param {Color4} color - The color of the line
+     * @param {boolean} clip - Whether to clip the line to screen bounds (default: false)
+     * @param {Uint32Array} backbuffer - The backbuffer to draw to (default: main backbuffer)
+     */
+    public lineHorizontalAbsolute(x1: number, x2: number, y: number, color: Color4, clip: boolean = false, backbuffer: Uint32Array = this.backbuffer32): void {
+        lineHorizontalAbsolute(this, x1, x2, y, color, clip, backbuffer);
+    }
+
+    /**
+     * Draw a horizontal line with desired color, supports optional clipping and custom backbuffers.
+     * 
+     * @param {Vector2} v1 - The first coordinate (start point)
+     * @param {Vector2} v2 - The second coordinate (end point)
+     * @param {Color4} color - The color of the line
+     * @param {boolean} clip - Whether to clip the line to screen bounds (default: false)
+     * @param {Uint32Array} backbuffer - The backbuffer to draw to (default: main backbuffer)
+     */
+    public lineHorizontalVector(v1: Vector2, v2: Vector2, color: Color4, clip: boolean = false, backbuffer: Uint32Array = this.backbuffer32): void {
+       lineHorizontalVector(this, v1, v2, color, clip, backbuffer);
+    }
 
     /**
      * Sets a pixel at the specified position in the given backbuffer.
