@@ -1,7 +1,11 @@
 
 # html5-typescript-canvas
 
-This repository demonstrates low-level pixel operations on an HTML5 canvas using TypeScript. The focus is on a "C"-style programming approach, prioritizing minimalism and direct control without relying on third party libraries or language extensions.
+This repository showcases low-level pixel manipulation techniques on an HTML5 canvas using TypeScript. The project adopts a "C"-style programming approach, emphasizing minimalism and direct control, avoiding reliance on third-party libraries or extensive language abstractions.
+
+The visual effects featured in this repository draw heavy inspiration from the demo scene of the 1990s, a subculture of programmers and digital artists who created technical showcases on platforms like the Amiga, Atari, and PC. The demo scene is renowned for its creativity and innovation, pushing the limits of hardware to produce stunning visuals, intricate animations, and synchronized music — all within highly constrained environments.
+
+By revisiting and recreating these iconic effects, this project aims to celebrate the artistry and ingenuity of the demo scene while offering a modern take using HTML5 and TypeScript.
 
 ## Key Features
 - **Low-level pixel operations**: direct manipulation of the canvas at the pixel level
