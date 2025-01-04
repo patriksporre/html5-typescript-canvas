@@ -138,4 +138,5 @@ export class Color4 {
     static red = new Color4({alpha: 255, red: 255, green: 0, blue: 0});
     static green = new Color4({alpha: 255, red: 0, green: 255, blue: 0});
     static blue = new Color4({alpha: 255, red: 0, green: 0, blue: 255});
+    static yellow = new Color4({alpha: 255, red: 255, green: 0, blue: 255});
 }
