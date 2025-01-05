@@ -230,5 +230,5 @@ This project is licensed under the MIT License.
 ## Contact
 - **Author**: Patrik Sporre  
 - **LinkedIn**: [linkedin.com/in/patriksporre](https://linkedin.com/in/patriksporre)  
-- **Bluesky**: [bsky.app/profile/patriksporre.se] (https://bsky.app/profile/patriksporre.se)
+- **Bluesky**: [bsky.app/profile/patriksporre.se](https://bsky.app/profile/patriksporre.se)
 - **Twitter / X**: [x.com/patriksporre](https://x.com/patriksporre)
