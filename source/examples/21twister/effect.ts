@@ -28,7 +28,7 @@ const center: Vector2 = new Vector2(); // Center point of the canvas
 const color: Color4 = new Color4({ caching: false }); // Temporary color used for shading calculations
 
 // Colors for the four sides of the twister
-const colors: Color4[] = [Color4.red, Color4.green, Color4.blue, Color4.yellow];
+const colors: Color4[] = [Color4.red, Color4.green, Color4.blue, Color4.purple];
 
 const twisterWidth: number = 100; // Width of the twister
 
@@ -165,6 +165,7 @@ export function render(blitter: Blitter, elapsedTime: number, deltaTime: number)
             const c2: Color4 = colors[(i + 1) % colors.length];
 
             if (x1 < x2) {
+                // Determine rendering method
                 switch (activeRendering) {
                     case 1: // Flat rendering
                         blitter.lineHorizontalAbsolute(x1, x2, y, colors[i]);
