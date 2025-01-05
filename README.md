@@ -227,5 +227,8 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 ## License
 This project is licensed under the MIT License.
 
-## Author
-Developed by Patrik Sporre.
+## Contact
+- **Author**: Patrik Sporre  
+- **LinkedIn**: [linkedin.com/in/patriksporre](https://linkedin.com/in/patriksporre)  
+- **Bluesky**: [bsky.app/profile/patriksporre.se] (https://bsky.app/profile/patriksporre.se)
+- **Twitter / X**: [x.com/patriksporre](https://x.com/patriksporre)
