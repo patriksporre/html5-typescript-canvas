@@ -218,7 +218,7 @@ Once started, navigate to the provided URL (e.g., `http://127.0.0.1:8080`) to vi
 
 ### 22. Twister (single color)
 
-**Description:** A vertical twister effect, simulating a twisting block with four sides. The sides are colored differently (red, green, blue, yellow) and the twist animates based on a sinusoidal function. The amplitude of the twist oscillates over time, giving a dynamic visual effect. Use keys 1 to 4 to select twist.
+**Description:** A vertical twister effect, simulating a twisting block with four sides. The sides are colored differently (red, green, blue, yellow) and the twist animates based on a sinusoidal function. The amplitude of the twist oscillates over time, giving a dynamic visual effect. Use keys '1' to '4' to select twist. Use key 'f' for flat rendering, 'g' for Gouraud rendering, and 't' for Gouraud texture rendering.
 
 ![Screenshot](./source/examples/21twister/screenshot.jpg)
 
